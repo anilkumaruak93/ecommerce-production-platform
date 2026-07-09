@@ -27,3 +27,7 @@ release/wi-kubernetes-manifests.yaml
 vendor/
 *.pem
 .terraform
+
+# Terraform plan files
+*.tfplan
+tfplan
