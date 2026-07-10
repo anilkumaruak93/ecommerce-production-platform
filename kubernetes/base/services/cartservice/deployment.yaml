@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cartservice
+  namespace: ecommerce
+  labels:
+    app.kubernetes.io/name: cartservice
+    app.kubernetes.io/part-of: ecommerce-production-platform
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: cartservice
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: cartservice
+        app.kubernetes.io/part-of: ecommerce-production-platform
+    spec:
+      imagePullSecrets:
+        - name: ecr-registry-credentials
+      containers:
+        - name: cartservice
+          image: 324352301255.dkr.ecr.ap-south-1.amazonaws.com/ecommerce/cartservice:v0.1.0
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: grpc
+              containerPort: 7070
+              protocol: TCP
+          env:
+            - name: ASPNETCORE_URLS
+              value: "http://+:7070"
