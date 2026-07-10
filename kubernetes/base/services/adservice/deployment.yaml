@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: adservice
+  namespace: ecommerce
+  labels:
+    app.kubernetes.io/name: adservice
+    app.kubernetes.io/part-of: ecommerce-production-platform
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: adservice
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: adservice
+        app.kubernetes.io/part-of: ecommerce-production-platform
+    spec:
+      imagePullSecrets:
+        - name: ecr-registry-credentials
+      containers:
+        - name: adservice
+          image: 324352301255.dkr.ecr.ap-south-1.amazonaws.com/ecommerce/adservice:v0.1.0
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: grpc
+              containerPort: 9555
+              protocol: TCP
+          env:
+            - name: PORT
+              value: "9555"
+            - name: DISABLE_STATS
+              value: "1"
+            - name: DISABLE_TRACING
+              value: "1"
