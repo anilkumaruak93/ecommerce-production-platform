@@ -34,5 +34,9 @@ spec:
           ports:
             - containerPort: {{ $svc.port }}
 
+{{- if $svc.env }}
+          env:
+{{ toYaml $svc.env | nindent 12 }}
 {{- end }}
 
+{{- end }}
