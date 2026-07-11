@@ -1,0 +1,38 @@
+{{- range $name, $svc := .Values.services }}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ $name }}
+  namespace: {{ $.Release.Namespace }}
+  labels:
+    app.kubernetes.io/name: {{ $name }}
+    app.kubernetes.io/part-of: ecommerce-production-platform
+
+spec:
+  replicas: {{ $svc.replicas }}
+
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: {{ $name }}
+
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: {{ $name }}
+        app.kubernetes.io/part-of: ecommerce-production-platform
+
+    spec:
+      imagePullSecrets:
+{{ toYaml $.Values.imagePullSecrets | nindent 8 }}
+
+      containers:
+        - name: {{ $name }}
+          image: "{{ $svc.image }}:{{ $svc.tag }}"
+          imagePullPolicy: IfNotPresent
+
+          ports:
+            - containerPort: {{ $svc.port }}
+
+{{- end }}
+

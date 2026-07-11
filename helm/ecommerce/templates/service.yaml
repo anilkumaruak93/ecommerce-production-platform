@@ -1,0 +1,26 @@
+{{- range $name, $svc := .Values.services }}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ $name }}
+  namespace: {{ $.Release.Namespace }}
+  labels:
+    app.kubernetes.io/name: {{ $name }}
+    app.kubernetes.io/part-of: ecommerce-production-platform
+
+spec:
+  type: {{ $svc.serviceType }}
+
+  selector:
+    app.kubernetes.io/name: {{ $name }}
+
+  ports:
+    - port: {{ $svc.port }}
+      targetPort: {{ $svc.port }}
+      protocol: TCP
+{{- if eq $svc.serviceType "NodePort" }}
+      nodePort: {{ $svc.nodePort }}
+{{- end }}
+
+{{- end }}
