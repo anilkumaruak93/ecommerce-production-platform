@@ -47,3 +47,9 @@ services:
     env:
       - name: PORT
         value: "7000"
+      - name: DISABLE_PROFILER
+        value: "1"
+      - name: ENABLE_PROFILER
+        value: "0"
+      - name: ENABLE_TRACING
+        VALUE: "0"
