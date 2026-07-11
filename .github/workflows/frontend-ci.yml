@@ -1,0 +1,25 @@
+name: Frontend CI
+
+on:
+  push:
+    branches:
+      - feature
+    paths:
+      - 'src/frontend/**'
+      - '.github/workflows/frontend-ci.yml'
+
+jobs:
+  frontend-build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Checkout Source Code
+        uses: actions/checkout@v4
+
+      - name: Build Frontend Docker Image
+        run: |
+          docker build \
+            -t ecommerce-frontend:ci \
+            ./src/frontend
