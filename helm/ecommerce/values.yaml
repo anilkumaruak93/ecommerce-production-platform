@@ -88,3 +88,10 @@ services:
         value: "0"
       - name: ENABLE_TRACING
         value: "0"
+
+  redis-cart:
+    image: redis
+    tag: "7.2-alpine"
+    replicas: 1
+    port: 6379
+    serviceType: ClusterIP
