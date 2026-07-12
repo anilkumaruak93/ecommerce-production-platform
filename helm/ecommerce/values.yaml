@@ -105,6 +105,23 @@ services:
       - name: ENABLE_TRACING
         value: "0"
 
+  shippingservice:
+    image: 324352301255.dkr.ecr.ap-south-1.amazonaws.com/ecommerce/shippingservice
+    tag: v0.1.0
+    replicas: 1
+    port: 50051
+    serviceType: ClusterIP
+
+    env:
+      - name: PORT
+        value: "50051"
+      - name: DISABLE_PROFILER
+        value: "1"
+      - name: ENABLE_PROFILER
+        value: "0"
+      - name: ENABLE_TRACING
+        value: "0"
+
   cartservice:
     image: 324352301255.dkr.ecr.ap-south-1.amazonaws.com/ecommerce/cartservice
     tag: v0.1.0
