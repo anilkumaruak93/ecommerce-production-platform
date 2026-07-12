@@ -5,6 +5,7 @@ kind: Deployment
 metadata:
   name: {{ $name }}
   namespace: {{ $.Release.Namespace }}
+
   labels:
     app.kubernetes.io/name: {{ $name }}
     app.kubernetes.io/part-of: ecommerce-production-platform
@@ -29,19 +30,41 @@ spec:
         app.kubernetes.io/part-of: ecommerce-production-platform
 
     spec:
+
+      serviceAccountName: ecommerce-sa
+
       imagePullSecrets:
 {{ toYaml $.Values.imagePullSecrets | nindent 8 }}
+
 
       containers:
         - name: {{ $name }}
           image: "{{ $svc.image }}:{{ $svc.tag }}"
           imagePullPolicy: IfNotPresent
 
+          securityContext:
+            runAsNonRoot: true
+            runAsUser: 1000
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: false
+
+            capabilities:
+              drop:
+                - ALL
+
           resources:
 {{ toYaml $svc.resources | nindent 12 }}
 
           ports:
             - containerPort: {{ $svc.port }}
+
+{{- if eq $name "redis-cart" }}
+
+          volumeMounts:
+            - name: redis-storage
+              mountPath: /data
+
+{{- end }}
 
           startupProbe:
             tcpSocket:
@@ -62,11 +85,17 @@ spec:
             initialDelaySeconds: 15
             periodSeconds: 20
 
-{{- if $svc.env }}
-          env:
-{{ toYaml $svc.env | nindent 12 }}
+          envFrom:
+            - configMapRef:
+                name: {{ $name }}-config
+
+{{- if eq $name "redis-cart" }}
+
+      volumes:
+        - name: redis-storage
+          persistentVolumeClaim:
+            claimName: redis-pvc
+
 {{- end }}
 
-
 {{- end }}
-

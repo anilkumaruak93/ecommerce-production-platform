@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: currencyservice
+  namespace: {{ .Release.Namespace }}
+  labels:
+    app.kubernetes.io/name: currencyservice
+    app.kubernetes.io/part-of: ecommerce-production-platform
+
+spec:
+  replicas: 1
+
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: currencyservice
+
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: currencyservice
+        app.kubernetes.io/part-of: ecommerce-production-platform
+
+    spec:
+      imagePullSecrets:
+{{- toYaml .Values.imagePullSecrets | nindent 8 }}
+
+      containers:
+        - name: currencyservice
+          image: "324352301255.dkr.ecr.ap-south-1.amazonaws.com/ecommerce/currencyservice:v0.1.0"
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 7000
+          env:
+            - name: PORT
+              value: "7000"

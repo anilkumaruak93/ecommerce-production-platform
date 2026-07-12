@@ -301,3 +301,12 @@ services:
       limits:
         cpu: "500m"
         memory: "512Mi"
+
+    env:
+      - name: REDIS_MODE
+        value: "standalone"
+
+ingress:
+  enabled: true
+  host: ecommerce.local
+

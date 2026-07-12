@@ -1,0 +1,16 @@
+{{- range $name, $svc := .Values.services }}
+{{- if $svc.env }}
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ $name }}-config
+  namespace: {{ $.Release.Namespace }}
+
+data:
+{{- range $svc.env }}
+  {{ .name }}: "{{ .value }}"
+{{- end }}
+
+{{- end }}
+{{- end }}
