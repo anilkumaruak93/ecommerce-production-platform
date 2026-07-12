@@ -37,6 +37,13 @@ spec:
           ports:
             - containerPort: {{ $svc.port }}
 
+          readinessProbe:
+            tcpSocket:
+              port: {{ $svc.port }}
+            initialDelaySeconds: 5
+            periodSeconds: 10
+
+
 {{- if $svc.env }}
           env:
 {{ toYaml $svc.env | nindent 12 }}
