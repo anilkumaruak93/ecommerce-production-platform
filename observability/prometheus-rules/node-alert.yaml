@@ -1,0 +1,18 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: node-alert-rules
+  namespace: monitoring
+spec:
+  groups:
+    - name: node.rules
+      rules:
+        - alert: NodeDown
+          expr: up == 0
+          for: 2m
+          labels:
+            severity: critical
+          annotations:
+            summary: "Node Down"
+            description: "Node is unreachable."
+

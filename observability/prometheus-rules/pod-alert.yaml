@@ -1,0 +1,17 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: pod-alert-rules
+  namespace: monitoring
+spec:
+  groups:
+    - name: pod.rules
+      rules:
+        - alert: PodDown
+          expr: kube_pod_status_ready{condition="true"} == 0
+          for: 2m
+          labels:
+            severity: critical
+          annotations:
+            summary: "Pod Down"
+            description: "One or more pods are not Ready."
