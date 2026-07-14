@@ -1,0 +1,78 @@
+grafana:
+  adminPassword: admin123
+
+  service:
+    type: NodePort
+    nodePort: 32059
+
+  additionalDataSources:
+    - name: Loki
+      uid: loki
+      type: loki
+      access: proxy
+      url: http://loki.logging:3100
+      isDefault: false
+
+      jsonData:
+        derivedFields:
+          - name: TraceID
+            matcherRegex: 'trace_id=(\w+)'
+            datasourceUid: tempo
+            url: '$${__value.raw}'
+
+    - name: Tempo
+      uid: tempo
+      type: tempo
+      access: proxy
+      url: http://tempo.tracing:3200
+      isDefault: false
+
+      jsonData:
+        tracesToLogsV2:
+          datasourceUid: loki
+          spanStartTimeShift: "-5m"
+          spanEndTimeShift: "5m"
+
+
+alertmanager:
+  enabled: true
+
+  config:
+    global:
+      smtp_smarthost: "smtp.gmail.com:587"
+      smtp_from: "anilkumardevops190@gmail.com"
+      smtp_auth_username: "anilkumardevops190@gmail.com"
+      smtp_auth_password: "uaou cjpd tyfc lqxs"
+      smtp_require_tls: true
+
+    route:
+      group_by:
+        - alertname
+      group_wait: 30s
+      group_interval: 5m
+      repeat_interval: 1h
+      receiver: "gmail"
+
+      routes:
+        - receiver: "null"
+          matchers:
+            - alertname = "Watchdog"
+
+    receivers:
+      - name: "null"
+
+      - name: "gmail"
+        email_configs:
+          - to: "anilkumardevops190@gmail.com"
+            from: "anilkumardevops190@gmail.com"
+            smarthost: "smtp.gmail.com:587"
+            auth_username: "anilkumardevops190@gmail.com"
+            auth_password: "uaou cjpd tyfc lqxs"
+            require_tls: true
+
+prometheus:
+  prometheusSpec:
+    retention: 15d
+
+defaultRules:
+  create: true

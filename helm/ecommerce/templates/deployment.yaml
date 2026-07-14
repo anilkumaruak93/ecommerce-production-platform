@@ -89,6 +89,11 @@ spec:
             - configMapRef:
                 name: {{ $name }}-config
 
+          env:
+{{- with $svc.env }}
+{{ toYaml . | nindent 12 }}
+{{- end }}
+
 {{- if eq $name "redis-cart" }}
 
       volumes:
@@ -99,3 +104,4 @@ spec:
 {{- end }}
 
 {{- end }}
+

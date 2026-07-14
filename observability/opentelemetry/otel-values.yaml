@@ -1,0 +1,44 @@
+mode: deployment
+
+image:
+  repository: otel/opentelemetry-collector-k8s
+
+config:
+  receivers:
+    otlp:
+      protocols:
+        grpc: {}
+        http: {}
+
+  processors:
+    batch: {}
+
+  exporters:
+    otlp:
+      endpoint: tempo.tracing.svc.cluster.local:4317
+      tls:
+        insecure: true
+
+    debug: {}
+
+  service:
+    pipelines:
+      traces:
+        receivers:
+          - otlp
+        processors:
+          - batch
+        exporters:
+          - otlp
+          - debug
+
+presets:
+  logsCollection:
+    enabled: false
+  hostMetrics:
+    enabled: false
+  kubernetesAttributes:
+    enabled: false
+  kubeletMetrics:
+    enabled: false
+
