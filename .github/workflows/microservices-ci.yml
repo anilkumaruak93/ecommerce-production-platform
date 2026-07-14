@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
 
     permissions:
-      contents: read
+      contents: write
 
     strategy:
       matrix:
@@ -55,3 +55,24 @@ jobs:
         run: |
           docker push \
           324352301255.dkr.ecr.ap-south-1.amazonaws.com/ecommerce/${{ matrix.service }}:${{ github.sha }}
+
+     - name: Configure Git
+        run: |
+          git config --global user.name "github-actions"
+          git config --global user.email "github-actions@github.com"
+
+      - name: Update Frontend Tag
+        if: matrix.service == 'frontend'
+        run: |
+          sed -i "s/tag: v0.1.1/tag: ${{ github.sha }}/" helm/ecommerce/values.yaml
+
+      - name: Commit Changes
+        if: matrix.service == 'frontend'
+        run: |
+          git add helm/ecommerce/values.yaml
+          git commit -m "ci: update frontend image tag to ${{ github.sha }}" || echo "No changes to commit"
+
+      - name: Push Changes
+        if: matrix.service == 'frontend'
+        run: |
+          git push origin feature
