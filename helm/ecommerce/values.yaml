@@ -80,7 +80,7 @@ services:
         value: "0"
   productcatalogservice:
     image: 324352301255.dkr.ecr.ap-south-1.amazonaws.com/ecommerce/productcatalogservice
-    tag: v0.1.0
+    tag: aa3a863c718b9ca3a25b16bc4e20548c22536ff1
     replicas: 1
     port: 3550
     serviceType: ClusterIP
@@ -131,7 +131,7 @@ services:
         value: "0"
   adservice:
     image: 324352301255.dkr.ecr.ap-south-1.amazonaws.com/ecommerce/adservice
-    tag: v0.1.0
+    tag: aa3a863c718b9ca3a25b16bc4e20548c22536ff1
     replicas: 1
     port: 9555
     serviceType: ClusterIP
@@ -157,7 +157,7 @@ services:
 
   shippingservice:
     image: 324352301255.dkr.ecr.ap-south-1.amazonaws.com/ecommerce/shippingservice
-    tag: v0.1.0
+    tag: aa3a863c718b9ca3a25b16bc4e20548c22536ff1
     replicas: 1
     port: 50051
     serviceType: ClusterIP
