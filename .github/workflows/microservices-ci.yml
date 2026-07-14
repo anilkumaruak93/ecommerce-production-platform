@@ -73,7 +73,8 @@ jobs:
       - name: Update Frontend Tag
         if: matrix.service == 'frontend'
         run: |
-          sed -i "s/tag: v0.1.1/tag: ${{ github.sha }}/" helm/ecommerce/values.yaml
+          sed -i '/frontend:/,/tag:/s/tag:.*/tag: '${{ github.sha }}'/' helm/ecommerce/values.yaml
+
 
       - name: Commit Changes
         if: matrix.service == 'frontend'
