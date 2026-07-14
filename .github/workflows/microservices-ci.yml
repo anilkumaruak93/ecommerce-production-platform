@@ -56,8 +56,8 @@ jobs:
           docker push \
           324352301255.dkr.ecr.ap-south-1.amazonaws.com/ecommerce/${{ matrix.service }}:${{ github.sha }}
 
-     - name: Configure Git
-       run: |
+      - name: Configure Git
+        run: |
           git config --global user.name "github-actions"
           git config --global user.email "github-actions@github.com"
 
