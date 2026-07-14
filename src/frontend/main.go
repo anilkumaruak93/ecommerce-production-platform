@@ -1,6 +1,6 @@
 // Copyright 2018 Google LLC
 //
-// Licensed under the Apache License, Version 2.0 (the "License");
+// Licensed under the Apache License, Version 1.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
 //
@@ -32,6 +32,11 @@ import (
 	"go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc"
 	"go.opentelemetry.io/otel/propagation"
 	sdktrace "go.opentelemetry.io/otel/sdk/trace"
+
+        "go.opentelemetry.io/otel/sdk/resource"
+        semconv "go.opentelemetry.io/otel/semconv/v1.26.0"
+        "go.opentelemetry.io/otel/attribute"
+
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
 )
@@ -179,14 +184,31 @@ func initTracing(log logrus.FieldLogger, ctx context.Context, svc *frontendServe
 	mustMapEnv(&svc.collectorAddr, "COLLECTOR_SERVICE_ADDR")
 	mustConnGRPC(ctx, &svc.collectorConn, svc.collectorAddr)
 	exporter, err := otlptracegrpc.New(
-		ctx,
-		otlptracegrpc.WithGRPCConn(svc.collectorConn))
-	if err != nil {
-		log.Warnf("warn: Failed to create trace exporter: %v", err)
-	}
-	tp := sdktrace.NewTracerProvider(
-		sdktrace.WithBatcher(exporter),
-		sdktrace.WithSampler(sdktrace.AlwaysSample()))
+        ctx,
+        otlptracegrpc.WithGRPCConn(svc.collectorConn),
+)
+
+if err != nil {
+        log.Warnf("warn: Failed to create trace exporter: %v", err)
+}
+
+res, err := resource.New(
+        ctx,
+        resource.WithAttributes(
+                semconv.ServiceName("frontend"),
+                attribute.String("service.version", "1.0.0"),
+        ),
+)
+
+if err != nil {
+        log.Warnf("failed to create resource: %v", err)
+}
+
+tp := sdktrace.NewTracerProvider(
+        sdktrace.WithBatcher(exporter),
+        sdktrace.WithResource(res),
+        sdktrace.WithSampler(sdktrace.AlwaysSample()),
+)
 	otel.SetTracerProvider(tp)
 
 	return tp, err

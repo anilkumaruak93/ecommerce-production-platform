@@ -1,3 +1,4 @@
+
 imagePullSecrets:
   - name: ecr-registry-credentials
 
@@ -5,7 +6,7 @@ services:
 
   frontend:
     image: 324352301255.dkr.ecr.ap-south-1.amazonaws.com/ecommerce/frontend
-    tag: v0.1.0
+    tag: v0.1.1
     replicas: 1
     port: 8080
     serviceType: NodePort
@@ -25,7 +26,13 @@ services:
       - name: LISTEN_ADDR
         value: "0.0.0.0"
       - name: ENABLE_TRACING
-        value: "0"
+        value: "1"
+      - name: OTEL_EXPORTER_OTLP_ENDPOINT
+        value: "http://otel-collector-opentelemetry-collector.opentelemetry.svc.cluster.local:4318"
+      - name: OTEL_EXPORTER_OTLP_PROTOCOL
+        value: "http/protobuf"
+      - name: COLLECTOR_SERVICE_ADDR
+        value: "otel-collector-opentelemetry-collector.opentelemetry.svc.cluster.local:4317"
       - name: ENABLE_PROFILER
         value: "0"
       - name: ENABLE_ASSISTANT
@@ -147,6 +154,7 @@ services:
       - name: ENABLE_TRACING
         value: "0"
 
+
   shippingservice:
     image: 324352301255.dkr.ecr.ap-south-1.amazonaws.com/ecommerce/shippingservice
     tag: v0.1.0
@@ -194,7 +202,14 @@ services:
       - name: ENABLE_PROFILER
         value: "0"
       - name: ENABLE_TRACING
-        value: "0"
+        value: "1"
+
+      - name: OTEL_EXPORTER_OTLP_ENDPOINT
+        value: "http://otel-collector-opentelemetry-collector.opentelemetry.svc.cluster.local:4318"
+
+      - name: OTEL_EXPORTER_OTLP_PROTOCOL
+        value: "http/protobuf"
+
 
   checkoutservice:
     image: 324352301255.dkr.ecr.ap-south-1.amazonaws.com/ecommerce/checkoutservice
@@ -231,7 +246,14 @@ services:
       - name: ENABLE_PROFILER
         value: "0"
       - name: ENABLE_TRACING
-        value: "0"
+        value: "1"
+      - name: OTEL_EXPORTER_OTLP_ENDPOINT
+        value: "http://otel-collector-opentelemetry-collector.opentelemetry.svc.cluster.local:4318"
+      - name: OTEL_EXPORTER_OTLP_PROTOCOL
+        value: "http/protobuf"
+      - name: COLLECTOR_SERVICE_ADDR
+        value: "otel-collector-opentelemetry-collector.opentelemetry.svc.cluster.local:4317"
+
 
   emailservice:
     image: 324352301255.dkr.ecr.ap-south-1.amazonaws.com/ecommerce/emailservice
