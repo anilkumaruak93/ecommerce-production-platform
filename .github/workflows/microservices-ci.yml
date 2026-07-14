@@ -38,7 +38,7 @@ jobs:
           scan-ref: '.'
           format: 'table'
           severity: 'HIGH,CRITICAL'
-          exit-code: '1
+          exit-code: '1'
 
       - uses: aws-actions/configure-aws-credentials@v4
         with:
