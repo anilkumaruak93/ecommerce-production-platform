@@ -17,6 +17,7 @@ package main
 import (
 	"context"
 	"fmt"
+
 	"net"
 	"os"
 	"time"
@@ -37,6 +38,9 @@ import (
 
 	"go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc"
 	"go.opentelemetry.io/otel"
+        "go.opentelemetry.io/otel/attribute"
+        "go.opentelemetry.io/otel/sdk/resource"
+        semconv "go.opentelemetry.io/otel/semconv/v1.21.0"
 	"go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc"
 	"go.opentelemetry.io/otel/propagation"
 	sdktrace "go.opentelemetry.io/otel/sdk/trace"
@@ -170,10 +174,23 @@ func initTracing() {
 	if err != nil {
 		log.Warnf("warn: Failed to create trace exporter: %v", err)
 	}
-	tp := sdktrace.NewTracerProvider(
-		sdktrace.WithBatcher(exporter),
-		sdktrace.WithSampler(sdktrace.AlwaysSample()))
-	otel.SetTracerProvider(tp)
+        res, err := resource.New(
+                ctx,
+                resource.WithAttributes(
+                        semconv.ServiceName("checkoutservice"),
+                        attribute.String("service.version", "1.0.0"),
+                ),
+        )
+        if err != nil {
+                log.Warnf("failed to create resource: %v", err)
+        }
+
+        tp := sdktrace.NewTracerProvider(
+                sdktrace.WithBatcher(exporter),
+                sdktrace.WithResource(res),
+                sdktrace.WithSampler(sdktrace.AlwaysSample()),
+        )
+        otel.SetTracerProvider(tp)
 
 }
 
@@ -182,8 +199,7 @@ func initProfiling(service, version string) {
 	// since they are not sharing packages.
 	for i := 1; i <= 3; i++ {
 		if err := profiler.Start(profiler.Config{
-			Service:        service,
-			ServiceVersion: version,
+			Service:        service,			ServiceVersion: version,
 			// ProjectID must be set if not running on GCP.
 			// ProjectID: "my-project",
 		}); err != nil {
