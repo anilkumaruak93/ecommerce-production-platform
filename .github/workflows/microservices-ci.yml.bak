@@ -1,0 +1,78 @@
+name: Microservices CI
+
+on:
+  push:
+    branches:
+      - feature
+
+jobs:
+  build-and-push:
+
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
+    strategy:
+      matrix:
+        service:
+          - frontend
+          - cartservice
+          - checkoutservice
+          - currencyservice
+          - productcatalogservice
+          - recommendationservice
+          - adservice
+          - shippingservice
+          - paymentservice
+          - emailservice
+
+    steps:
+
+      - uses: actions/checkout@v4
+
+      - uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ap-south-1
+
+      - uses: aws-actions/amazon-ecr-login@v2
+
+      - name: Build Docker Image
+        run: |
+          docker build \
+            -t ecommerce/${{ matrix.service }}:${{ github.sha }} \
+            ./src/${{ matrix.service }}
+
+      - name: Tag Image
+        run: |
+          docker tag \
+          ecommerce/${{ matrix.service }}:${{ github.sha }} \
+          324352301255.dkr.ecr.ap-south-1.amazonaws.com/ecommerce/${{ matrix.service }}:${{ github.sha }}
+
+      - name: Push Image
+        run: |
+          docker push \
+          324352301255.dkr.ecr.ap-south-1.amazonaws.com/ecommerce/${{ matrix.service }}:${{ github.sha }}
+
+      - name: Configure Git
+        run: |
+          git config --global user.name "github-actions"
+          git config --global user.email "github-actions@github.com"
+
+      - name: Update Frontend Tag
+        if: matrix.service == 'frontend'
+        run: |
+          sed -i "s/tag: v0.1.1/tag: ${{ github.sha }}/" helm/ecommerce/values.yaml
+
+      - name: Commit Changes
+        if: matrix.service == 'frontend'
+        run: |
+          git add helm/ecommerce/values.yaml
+          git commit -m "ci: update frontend image tag to ${{ github.sha }}" || echo "No changes to commit"
+
+      - name: Push Changes
+        if: matrix.service == 'frontend'
+        run: |
+          git push origin feature
