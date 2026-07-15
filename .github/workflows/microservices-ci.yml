@@ -6,7 +6,35 @@ on:
       - feature
 
 jobs:
+
+  sonarqube:
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - uses: actions/checkout@v4
+
+      - name: SonarQube Scan
+        run: |
+          cat > sonar-project.properties <<EOF
+          sonar.projectKey=ecommerce-production-platform
+          sonar.projectName=ecommerce-production-platform
+          sonar.projectVersion=1.0
+          sonar.sources=.
+          sonar.sourceEncoding=UTF-8
+          sonar.host.url=http://40.192.39.25:31937
+          sonar.token=${{ secrets.SONAR_TOKEN }}
+          sonar.exclusions=**/*.java
+          EOF
+
+          docker run --rm \
+             -v ${{ github.workspace }}:/usr/src \
+             sonarsource/sonar-scanner-cli:latest
+
+
+
   build-and-push:
+    needs: sonarqube
 
     runs-on: ubuntu-latest
 
@@ -30,6 +58,7 @@ jobs:
     steps:
 
       - uses: actions/checkout@v4
+
 
       - name: Run Trivy Vulnerability Scanner
         uses: aquasecurity/trivy-action@master
