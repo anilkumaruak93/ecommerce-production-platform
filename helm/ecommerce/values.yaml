@@ -3,7 +3,7 @@ services:
 
   frontend:
     image: 324352301255.dkr.ecr.ap-south-1.amazonaws.com/ecommerce/frontend
-    tag: 24772965cdac8bad930534793b9b1e4716b52001
+    tag: 99fd61ce24fc31bbb2adbf47ee1fdd2c1b99f9b7
     replicas: 1
     port: 8080
     serviceType: NodePort
