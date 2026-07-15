@@ -327,5 +327,6 @@ services:
 
 ingress:
   enabled: true
-  host: ecommerce.local
+  className: traefik
+  host: ""
 
