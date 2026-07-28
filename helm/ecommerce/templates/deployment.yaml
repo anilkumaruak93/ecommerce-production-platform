@@ -34,7 +34,8 @@ spec:
       serviceAccountName: ecommerce-sa
 
       imagePullSecrets:
-{{ toYaml $.Values.imagePullSecrets | nindent 8 }}
+          {{- toYaml $.Values.imagePullSecrets | nindent 8 }}
+
 
 
       containers:
