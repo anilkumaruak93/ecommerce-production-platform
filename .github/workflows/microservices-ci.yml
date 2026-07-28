@@ -22,15 +22,16 @@ jobs:
           sonar.projectVersion=1.0
           sonar.sources=.
           sonar.sourceEncoding=UTF-8
-          sonar.host.url=http://40.192.39.25:31937
+          sonar.host.url=${{ secrets.SONAR_HOST_URL }}
           sonar.token=${{ secrets.SONAR_TOKEN }}
           sonar.exclusions=**/*.java
           EOF
 
-          docker run --rm \
-             -v ${{ github.workspace }}:/usr/src \
-             sonarsource/sonar-scanner-cli:latest
-
+        docker run --rm \
+          -e SONAR_HOST_URL="${{ secrets.SONAR_HOST_URL }}" \
+          -e SONAR_TOKEN="${{ secrets.SONAR_TOKEN }}" \
+          -v "${{ github.workspace }}:/usr/src" \
+          sonarsource/sonar-scanner-cli:latest
 
 
   build-and-push:
