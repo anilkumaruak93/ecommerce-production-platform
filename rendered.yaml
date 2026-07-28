@@ -1,0 +1,2299 @@
+---
+# Source: ecommerce/templates/networkpolicy.yaml
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: adservice
+  namespace: ecommerce-helm
+
+spec:
+  podSelector:
+    matchLabels:
+      app.kubernetes.io/name: adservice
+
+  policyTypes:
+    - Ingress
+    - Egress
+
+  ingress:
+    - {}
+
+  egress:
+    - {}
+---
+# Source: ecommerce/templates/networkpolicy.yaml
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: cartservice
+  namespace: ecommerce-helm
+
+spec:
+  podSelector:
+    matchLabels:
+      app.kubernetes.io/name: cartservice
+
+  policyTypes:
+    - Ingress
+    - Egress
+
+  ingress:
+    - {}
+
+  egress:
+    - {}
+---
+# Source: ecommerce/templates/networkpolicy.yaml
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: checkoutservice
+  namespace: ecommerce-helm
+
+spec:
+  podSelector:
+    matchLabels:
+      app.kubernetes.io/name: checkoutservice
+
+  policyTypes:
+    - Ingress
+    - Egress
+
+  ingress:
+    - {}
+
+  egress:
+    - {}
+---
+# Source: ecommerce/templates/networkpolicy.yaml
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: currencyservice
+  namespace: ecommerce-helm
+
+spec:
+  podSelector:
+    matchLabels:
+      app.kubernetes.io/name: currencyservice
+
+  policyTypes:
+    - Ingress
+    - Egress
+
+  ingress:
+    - {}
+
+  egress:
+    - {}
+---
+# Source: ecommerce/templates/networkpolicy.yaml
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: emailservice
+  namespace: ecommerce-helm
+
+spec:
+  podSelector:
+    matchLabels:
+      app.kubernetes.io/name: emailservice
+
+  policyTypes:
+    - Ingress
+    - Egress
+
+  ingress:
+    - {}
+
+  egress:
+    - {}
+---
+# Source: ecommerce/templates/networkpolicy.yaml
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: frontend
+  namespace: ecommerce-helm
+
+spec:
+  podSelector:
+    matchLabels:
+      app.kubernetes.io/name: frontend
+
+  policyTypes:
+    - Ingress
+    - Egress
+
+  ingress:
+    - {}
+
+  egress:
+    - {}
+---
+# Source: ecommerce/templates/networkpolicy.yaml
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: paymentservice
+  namespace: ecommerce-helm
+
+spec:
+  podSelector:
+    matchLabels:
+      app.kubernetes.io/name: paymentservice
+
+  policyTypes:
+    - Ingress
+    - Egress
+
+  ingress:
+    - {}
+
+  egress:
+    - {}
+---
+# Source: ecommerce/templates/networkpolicy.yaml
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: productcatalogservice
+  namespace: ecommerce-helm
+
+spec:
+  podSelector:
+    matchLabels:
+      app.kubernetes.io/name: productcatalogservice
+
+  policyTypes:
+    - Ingress
+    - Egress
+
+  ingress:
+    - {}
+
+  egress:
+    - {}
+---
+# Source: ecommerce/templates/networkpolicy.yaml
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: recommendationservice
+  namespace: ecommerce-helm
+
+spec:
+  podSelector:
+    matchLabels:
+      app.kubernetes.io/name: recommendationservice
+
+  policyTypes:
+    - Ingress
+    - Egress
+
+  ingress:
+    - {}
+
+  egress:
+    - {}
+---
+# Source: ecommerce/templates/networkpolicy.yaml
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: redis-cart
+  namespace: ecommerce-helm
+
+spec:
+  podSelector:
+    matchLabels:
+      app.kubernetes.io/name: redis-cart
+
+  policyTypes:
+    - Ingress
+    - Egress
+
+  ingress:
+    - {}
+
+  egress:
+    - {}
+---
+# Source: ecommerce/templates/networkpolicy.yaml
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: shippingservice
+  namespace: ecommerce-helm
+
+spec:
+  podSelector:
+    matchLabels:
+      app.kubernetes.io/name: shippingservice
+
+  policyTypes:
+    - Ingress
+    - Egress
+
+  ingress:
+    - {}
+
+  egress:
+    - {}
+---
+# Source: ecommerce/templates/pdb.yaml
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: adservice-pdb
+  namespace: ecommerce-helm
+
+spec:
+  minAvailable: 1
+
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: adservice
+---
+# Source: ecommerce/templates/pdb.yaml
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: cartservice-pdb
+  namespace: ecommerce-helm
+
+spec:
+  minAvailable: 1
+
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: cartservice
+---
+# Source: ecommerce/templates/pdb.yaml
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: checkoutservice-pdb
+  namespace: ecommerce-helm
+
+spec:
+  minAvailable: 1
+
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: checkoutservice
+---
+# Source: ecommerce/templates/pdb.yaml
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: currencyservice-pdb
+  namespace: ecommerce-helm
+
+spec:
+  minAvailable: 1
+
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: currencyservice
+---
+# Source: ecommerce/templates/pdb.yaml
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: emailservice-pdb
+  namespace: ecommerce-helm
+
+spec:
+  minAvailable: 1
+
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: emailservice
+---
+# Source: ecommerce/templates/pdb.yaml
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: frontend-pdb
+  namespace: ecommerce-helm
+
+spec:
+  minAvailable: 1
+
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: frontend
+---
+# Source: ecommerce/templates/pdb.yaml
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: paymentservice-pdb
+  namespace: ecommerce-helm
+
+spec:
+  minAvailable: 1
+
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: paymentservice
+---
+# Source: ecommerce/templates/pdb.yaml
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: productcatalogservice-pdb
+  namespace: ecommerce-helm
+
+spec:
+  minAvailable: 1
+
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: productcatalogservice
+---
+# Source: ecommerce/templates/pdb.yaml
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: recommendationservice-pdb
+  namespace: ecommerce-helm
+
+spec:
+  minAvailable: 1
+
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: recommendationservice
+---
+# Source: ecommerce/templates/pdb.yaml
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: redis-cart-pdb
+  namespace: ecommerce-helm
+
+spec:
+  minAvailable: 1
+
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: redis-cart
+---
+# Source: ecommerce/templates/pdb.yaml
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: shippingservice-pdb
+  namespace: ecommerce-helm
+
+spec:
+  minAvailable: 1
+
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: shippingservice
+---
+# Source: ecommerce/templates/serviceaccount.yaml
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: ecommerce-sa
+  namespace: ecommerce-helm
+---
+# Source: ecommerce/templates/secret.yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: ecommerce-secret
+  namespace: ecommerce-helm
+type: Opaque
+
+stringData:
+  REDIS_PASSWORD: "redis123"
+---
+# Source: ecommerce/templates/configmap.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: adservice-config
+  namespace: ecommerce-helm
+
+data:
+  PORT: "9555"
+  DISABLE_PROFILER: "1"
+  ENABLE_PROFILER: "0"
+  ENABLE_TRACING: "0"
+---
+# Source: ecommerce/templates/configmap.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: cartservice-config
+  namespace: ecommerce-helm
+
+data:
+  REDIS_ADDR: "redis-cart:6379"
+  PORT: "7070"
+  DISABLE_PROFILER: "1"
+  ENABLE_PROFILER: "0"
+  ENABLE_TRACING: "0"
+---
+# Source: ecommerce/templates/configmap.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: checkoutservice-config
+  namespace: ecommerce-helm
+
+data:
+  PORT: "5050"
+  PRODUCT_CATALOG_SERVICE_ADDR: "productcatalogservice:3550"
+  SHIPPING_SERVICE_ADDR: "shippingservice:50051"
+  PAYMENT_SERVICE_ADDR: "paymentservice:50051"
+  EMAIL_SERVICE_ADDR: "emailservice:8080"
+  CURRENCY_SERVICE_ADDR: "currencyservice:7000"
+  CART_SERVICE_ADDR: "cartservice:7070"
+  DISABLE_PROFILER: "1"
+  ENABLE_PROFILER: "0"
+  ENABLE_TRACING: "1"
+  OTEL_EXPORTER_OTLP_ENDPOINT: "http://otel-collector-opentelemetry-collector.opentelemetry.svc.cluster.local:4318"
+  OTEL_EXPORTER_OTLP_PROTOCOL: "http/protobuf"
+  COLLECTOR_SERVICE_ADDR: "otel-collector-opentelemetry-collector.opentelemetry.svc.cluster.local:4317"
+---
+# Source: ecommerce/templates/configmap.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: currencyservice-config
+  namespace: ecommerce-helm
+
+data:
+  PORT: "7000"
+  DISABLE_PROFILER: "1"
+  ENABLE_PROFILER: "0"
+  ENABLE_TRACING: "0"
+---
+# Source: ecommerce/templates/configmap.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: emailservice-config
+  namespace: ecommerce-helm
+
+data:
+  PORT: "8080"
+  DISABLE_PROFILER: "1"
+  ENABLE_PROFILER: "0"
+  ENABLE_TRACING: "0"
+---
+# Source: ecommerce/templates/configmap.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: frontend-config
+  namespace: ecommerce-helm
+
+data:
+  PORT: "8080"
+  LISTEN_ADDR: "0.0.0.0"
+  ENABLE_TRACING: "1"
+  OTEL_EXPORTER_OTLP_ENDPOINT: "http://otel-collector-opentelemetry-collector.opentelemetry.svc.cluster.local:4318"
+  OTEL_EXPORTER_OTLP_PROTOCOL: "http/protobuf"
+  COLLECTOR_SERVICE_ADDR: "otel-collector-opentelemetry-collector.opentelemetry.svc.cluster.local:4317"
+  ENABLE_PROFILER: "0"
+  ENABLE_ASSISTANT: "false"
+  PRODUCT_CATALOG_SERVICE_ADDR: "productcatalogservice:3550"
+  CURRENCY_SERVICE_ADDR: "currencyservice:7000"
+  CART_SERVICE_ADDR: "cartservice:7070"
+  RECOMMENDATION_SERVICE_ADDR: "recommendationservice:8080"
+  CHECKOUT_SERVICE_ADDR: "checkoutservice:5050"
+  SHIPPING_SERVICE_ADDR: "shippingservice:50051"
+  AD_SERVICE_ADDR: "adservice:9555"
+  SHOPPING_ASSISTANT_SERVICE_ADDR: "shoppingassistantservice:8080"
+---
+# Source: ecommerce/templates/configmap.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: paymentservice-config
+  namespace: ecommerce-helm
+
+data:
+  PORT: "50051"
+  DISABLE_PROFILER: "1"
+  ENABLE_PROFILER: "0"
+  ENABLE_TRACING: "1"
+  OTEL_EXPORTER_OTLP_ENDPOINT: "http://otel-collector-opentelemetry-collector.opentelemetry.svc.cluster.local:4318"
+  OTEL_EXPORTER_OTLP_PROTOCOL: "http/protobuf"
+---
+# Source: ecommerce/templates/configmap.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: productcatalogservice-config
+  namespace: ecommerce-helm
+
+data:
+  PORT: "3550"
+  DISABLE_PROFILER: "1"
+  ENABLE_PROFILER: "0"
+  ENABLE_TRACING: "0"
+---
+# Source: ecommerce/templates/configmap.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: recommendationservice-config
+  namespace: ecommerce-helm
+
+data:
+  PORT: "8080"
+  PRODUCT_CATALOG_SERVICE_ADDR: "productcatalogservice:3550"
+  DISABLE_PROFILER: "1"
+  ENABLE_PROFILER: "0"
+  ENABLE_TRACING: "0"
+---
+# Source: ecommerce/templates/configmap.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: redis-cart-config
+  namespace: ecommerce-helm
+
+data:
+  REDIS_MODE: "standalone"
+---
+# Source: ecommerce/templates/configmap.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: shippingservice-config
+  namespace: ecommerce-helm
+
+data:
+  PORT: "50051"
+  DISABLE_PROFILER: "1"
+  ENABLE_PROFILER: "0"
+  ENABLE_TRACING: "0"
+---
+# Source: ecommerce/templates/pvc.yaml
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: redis-pvc
+  namespace: ecommerce-helm
+
+spec:
+  accessModes:
+    - ReadWriteOnce
+
+  resources:
+    requests:
+      storage: 2Gi
+---
+# Source: ecommerce/templates/rbac.yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: ecommerce-role
+  namespace: ecommerce-helm
+
+rules:
+- apiGroups: [""]
+  resources:
+    - pods
+    - services
+    - configmaps
+  verbs:
+    - get
+    - list
+    - watch
+---
+# Source: ecommerce/templates/rbac.yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: ecommerce-rolebinding
+  namespace: ecommerce-helm
+
+subjects:
+- kind: ServiceAccount
+  name: ecommerce-sa
+
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: ecommerce-role
+---
+# Source: ecommerce/templates/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: adservice
+  namespace: ecommerce-helm
+  labels:
+    app.kubernetes.io/name: adservice
+    app.kubernetes.io/part-of: ecommerce-production-platform
+
+spec:
+  type: ClusterIP
+
+  selector:
+    app.kubernetes.io/name: adservice
+
+  ports:
+    - port: 9555
+      targetPort: 9555
+      protocol: TCP
+---
+# Source: ecommerce/templates/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: cartservice
+  namespace: ecommerce-helm
+  labels:
+    app.kubernetes.io/name: cartservice
+    app.kubernetes.io/part-of: ecommerce-production-platform
+
+spec:
+  type: ClusterIP
+
+  selector:
+    app.kubernetes.io/name: cartservice
+
+  ports:
+    - port: 7070
+      targetPort: 7070
+      protocol: TCP
+---
+# Source: ecommerce/templates/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: checkoutservice
+  namespace: ecommerce-helm
+  labels:
+    app.kubernetes.io/name: checkoutservice
+    app.kubernetes.io/part-of: ecommerce-production-platform
+
+spec:
+  type: ClusterIP
+
+  selector:
+    app.kubernetes.io/name: checkoutservice
+
+  ports:
+    - port: 5050
+      targetPort: 5050
+      protocol: TCP
+---
+# Source: ecommerce/templates/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: currencyservice
+  namespace: ecommerce-helm
+  labels:
+    app.kubernetes.io/name: currencyservice
+    app.kubernetes.io/part-of: ecommerce-production-platform
+
+spec:
+  type: ClusterIP
+
+  selector:
+    app.kubernetes.io/name: currencyservice
+
+  ports:
+    - port: 7000
+      targetPort: 7000
+      protocol: TCP
+---
+# Source: ecommerce/templates/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: emailservice
+  namespace: ecommerce-helm
+  labels:
+    app.kubernetes.io/name: emailservice
+    app.kubernetes.io/part-of: ecommerce-production-platform
+
+spec:
+  type: ClusterIP
+
+  selector:
+    app.kubernetes.io/name: emailservice
+
+  ports:
+    - port: 8080
+      targetPort: 8080
+      protocol: TCP
+---
+# Source: ecommerce/templates/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend
+  namespace: ecommerce-helm
+  labels:
+    app.kubernetes.io/name: frontend
+    app.kubernetes.io/part-of: ecommerce-production-platform
+
+spec:
+  type: NodePort
+
+  selector:
+    app.kubernetes.io/name: frontend
+
+  ports:
+    - port: 8080
+      targetPort: 8080
+      protocol: TCP
+      nodePort: 30081
+---
+# Source: ecommerce/templates/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: paymentservice
+  namespace: ecommerce-helm
+  labels:
+    app.kubernetes.io/name: paymentservice
+    app.kubernetes.io/part-of: ecommerce-production-platform
+
+spec:
+  type: ClusterIP
+
+  selector:
+    app.kubernetes.io/name: paymentservice
+
+  ports:
+    - port: 50051
+      targetPort: 50051
+      protocol: TCP
+---
+# Source: ecommerce/templates/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: productcatalogservice
+  namespace: ecommerce-helm
+  labels:
+    app.kubernetes.io/name: productcatalogservice
+    app.kubernetes.io/part-of: ecommerce-production-platform
+
+spec:
+  type: ClusterIP
+
+  selector:
+    app.kubernetes.io/name: productcatalogservice
+
+  ports:
+    - port: 3550
+      targetPort: 3550
+      protocol: TCP
+---
+# Source: ecommerce/templates/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: recommendationservice
+  namespace: ecommerce-helm
+  labels:
+    app.kubernetes.io/name: recommendationservice
+    app.kubernetes.io/part-of: ecommerce-production-platform
+
+spec:
+  type: ClusterIP
+
+  selector:
+    app.kubernetes.io/name: recommendationservice
+
+  ports:
+    - port: 8080
+      targetPort: 8080
+      protocol: TCP
+---
+# Source: ecommerce/templates/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: redis-cart
+  namespace: ecommerce-helm
+  labels:
+    app.kubernetes.io/name: redis-cart
+    app.kubernetes.io/part-of: ecommerce-production-platform
+
+spec:
+  type: ClusterIP
+
+  selector:
+    app.kubernetes.io/name: redis-cart
+
+  ports:
+    - port: 6379
+      targetPort: 6379
+      protocol: TCP
+---
+# Source: ecommerce/templates/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: shippingservice
+  namespace: ecommerce-helm
+  labels:
+    app.kubernetes.io/name: shippingservice
+    app.kubernetes.io/part-of: ecommerce-production-platform
+
+spec:
+  type: ClusterIP
+
+  selector:
+    app.kubernetes.io/name: shippingservice
+
+  ports:
+    - port: 50051
+      targetPort: 50051
+      protocol: TCP
+---
+# Source: ecommerce/templates/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: adservice
+  namespace: ecommerce-helm
+
+  labels:
+    app.kubernetes.io/name: adservice
+    app.kubernetes.io/part-of: ecommerce-production-platform
+
+spec:
+  replicas: 1
+
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 0
+      maxSurge: 1
+
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: adservice
+
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: adservice
+        app.kubernetes.io/part-of: ecommerce-production-platform
+
+    spec:
+
+      serviceAccountName: ecommerce-sa
+
+      imagePullSecrets:
+
+        null
+
+
+      containers:
+        - name: adservice
+          image: "324352301255.dkr.ecr.ap-south-1.amazonaws.com/ecommerce/adservice:3f54f70aba100ffdc19042357e5bbd3390ae6802"
+          imagePullPolicy: IfNotPresent
+
+          securityContext:
+            runAsNonRoot: true
+            runAsUser: 1000
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: false
+
+            capabilities:
+              drop:
+                - ALL
+
+          resources:
+
+            limits:
+              cpu: 500m
+              memory: 512Mi
+            requests:
+              cpu: 100m
+              memory: 128Mi
+
+          ports:
+            - containerPort: 9555
+
+          startupProbe:
+            tcpSocket:
+              port: 9555
+            initialDelaySeconds: 5
+            periodSeconds: 5
+            failureThreshold: 30
+
+          readinessProbe:
+            tcpSocket:
+              port: 9555
+            initialDelaySeconds: 5
+            periodSeconds: 10
+
+          livenessProbe:
+            tcpSocket:
+              port: 9555
+            initialDelaySeconds: 15
+            periodSeconds: 20
+
+          envFrom:
+            - configMapRef:
+                name: adservice-config
+
+          env:
+
+            - name: PORT
+              value: "9555"
+            - name: DISABLE_PROFILER
+              value: "1"
+            - name: ENABLE_PROFILER
+              value: "0"
+            - name: ENABLE_TRACING
+              value: "0"
+---
+# Source: ecommerce/templates/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cartservice
+  namespace: ecommerce-helm
+
+  labels:
+    app.kubernetes.io/name: cartservice
+    app.kubernetes.io/part-of: ecommerce-production-platform
+
+spec:
+  replicas: 1
+
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 0
+      maxSurge: 1
+
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: cartservice
+
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: cartservice
+        app.kubernetes.io/part-of: ecommerce-production-platform
+
+    spec:
+
+      serviceAccountName: ecommerce-sa
+
+      imagePullSecrets:
+
+        null
+
+
+      containers:
+        - name: cartservice
+          image: "324352301255.dkr.ecr.ap-south-1.amazonaws.com/ecommerce/cartservice:3f54f70aba100ffdc19042357e5bbd3390ae6802"
+          imagePullPolicy: IfNotPresent
+
+          securityContext:
+            runAsNonRoot: true
+            runAsUser: 1000
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: false
+
+            capabilities:
+              drop:
+                - ALL
+
+          resources:
+
+            limits:
+              cpu: 500m
+              memory: 512Mi
+            requests:
+              cpu: 100m
+              memory: 128Mi
+
+          ports:
+            - containerPort: 7070
+
+          startupProbe:
+            tcpSocket:
+              port: 7070
+            initialDelaySeconds: 5
+            periodSeconds: 5
+            failureThreshold: 30
+
+          readinessProbe:
+            tcpSocket:
+              port: 7070
+            initialDelaySeconds: 5
+            periodSeconds: 10
+
+          livenessProbe:
+            tcpSocket:
+              port: 7070
+            initialDelaySeconds: 15
+            periodSeconds: 20
+
+          envFrom:
+            - configMapRef:
+                name: cartservice-config
+
+          env:
+
+            - name: REDIS_ADDR
+              value: redis-cart:6379
+            - name: PORT
+              value: "7070"
+            - name: DISABLE_PROFILER
+              value: "1"
+            - name: ENABLE_PROFILER
+              value: "0"
+            - name: ENABLE_TRACING
+              value: "0"
+---
+# Source: ecommerce/templates/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: checkoutservice
+  namespace: ecommerce-helm
+
+  labels:
+    app.kubernetes.io/name: checkoutservice
+    app.kubernetes.io/part-of: ecommerce-production-platform
+
+spec:
+  replicas: 1
+
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 0
+      maxSurge: 1
+
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: checkoutservice
+
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: checkoutservice
+        app.kubernetes.io/part-of: ecommerce-production-platform
+
+    spec:
+
+      serviceAccountName: ecommerce-sa
+
+      imagePullSecrets:
+
+        null
+
+
+      containers:
+        - name: checkoutservice
+          image: "324352301255.dkr.ecr.ap-south-1.amazonaws.com/ecommerce/checkoutservice:3f54f70aba100ffdc19042357e5bbd3390ae6802"
+          imagePullPolicy: IfNotPresent
+
+          securityContext:
+            runAsNonRoot: true
+            runAsUser: 1000
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: false
+
+            capabilities:
+              drop:
+                - ALL
+
+          resources:
+
+            limits:
+              cpu: 500m
+              memory: 512Mi
+            requests:
+              cpu: 100m
+              memory: 128Mi
+
+          ports:
+            - containerPort: 5050
+
+          startupProbe:
+            tcpSocket:
+              port: 5050
+            initialDelaySeconds: 5
+            periodSeconds: 5
+            failureThreshold: 30
+
+          readinessProbe:
+            tcpSocket:
+              port: 5050
+            initialDelaySeconds: 5
+            periodSeconds: 10
+
+          livenessProbe:
+            tcpSocket:
+              port: 5050
+            initialDelaySeconds: 15
+            periodSeconds: 20
+
+          envFrom:
+            - configMapRef:
+                name: checkoutservice-config
+
+          env:
+
+            - name: PORT
+              value: "5050"
+            - name: PRODUCT_CATALOG_SERVICE_ADDR
+              value: productcatalogservice:3550
+            - name: SHIPPING_SERVICE_ADDR
+              value: shippingservice:50051
+            - name: PAYMENT_SERVICE_ADDR
+              value: paymentservice:50051
+            - name: EMAIL_SERVICE_ADDR
+              value: emailservice:8080
+            - name: CURRENCY_SERVICE_ADDR
+              value: currencyservice:7000
+            - name: CART_SERVICE_ADDR
+              value: cartservice:7070
+            - name: DISABLE_PROFILER
+              value: "1"
+            - name: ENABLE_PROFILER
+              value: "0"
+            - name: ENABLE_TRACING
+              value: "1"
+            - name: OTEL_EXPORTER_OTLP_ENDPOINT
+              value: http://otel-collector-opentelemetry-collector.opentelemetry.svc.cluster.local:4318
+            - name: OTEL_EXPORTER_OTLP_PROTOCOL
+              value: http/protobuf
+            - name: COLLECTOR_SERVICE_ADDR
+              value: otel-collector-opentelemetry-collector.opentelemetry.svc.cluster.local:4317
+---
+# Source: ecommerce/templates/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: currencyservice
+  namespace: ecommerce-helm
+
+  labels:
+    app.kubernetes.io/name: currencyservice
+    app.kubernetes.io/part-of: ecommerce-production-platform
+
+spec:
+  replicas: 1
+
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 0
+      maxSurge: 1
+
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: currencyservice
+
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: currencyservice
+        app.kubernetes.io/part-of: ecommerce-production-platform
+
+    spec:
+
+      serviceAccountName: ecommerce-sa
+
+      imagePullSecrets:
+
+        null
+
+
+      containers:
+        - name: currencyservice
+          image: "324352301255.dkr.ecr.ap-south-1.amazonaws.com/ecommerce/currencyservice:3f54f70aba100ffdc19042357e5bbd3390ae6802"
+          imagePullPolicy: IfNotPresent
+
+          securityContext:
+            runAsNonRoot: true
+            runAsUser: 1000
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: false
+
+            capabilities:
+              drop:
+                - ALL
+
+          resources:
+
+            limits:
+              cpu: 500m
+              memory: 512Mi
+            requests:
+              cpu: 100m
+              memory: 128Mi
+
+          ports:
+            - containerPort: 7000
+
+          startupProbe:
+            tcpSocket:
+              port: 7000
+            initialDelaySeconds: 5
+            periodSeconds: 5
+            failureThreshold: 30
+
+          readinessProbe:
+            tcpSocket:
+              port: 7000
+            initialDelaySeconds: 5
+            periodSeconds: 10
+
+          livenessProbe:
+            tcpSocket:
+              port: 7000
+            initialDelaySeconds: 15
+            periodSeconds: 20
+
+          envFrom:
+            - configMapRef:
+                name: currencyservice-config
+
+          env:
+
+            - name: PORT
+              value: "7000"
+            - name: DISABLE_PROFILER
+              value: "1"
+            - name: ENABLE_PROFILER
+              value: "0"
+            - name: ENABLE_TRACING
+              value: "0"
+---
+# Source: ecommerce/templates/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: emailservice
+  namespace: ecommerce-helm
+
+  labels:
+    app.kubernetes.io/name: emailservice
+    app.kubernetes.io/part-of: ecommerce-production-platform
+
+spec:
+  replicas: 1
+
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 0
+      maxSurge: 1
+
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: emailservice
+
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: emailservice
+        app.kubernetes.io/part-of: ecommerce-production-platform
+
+    spec:
+
+      serviceAccountName: ecommerce-sa
+
+      imagePullSecrets:
+
+        null
+
+
+      containers:
+        - name: emailservice
+          image: "324352301255.dkr.ecr.ap-south-1.amazonaws.com/ecommerce/emailservice:3f54f70aba100ffdc19042357e5bbd3390ae6802"
+          imagePullPolicy: IfNotPresent
+
+          securityContext:
+            runAsNonRoot: true
+            runAsUser: 1000
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: false
+
+            capabilities:
+              drop:
+                - ALL
+
+          resources:
+
+            limits:
+              cpu: 500m
+              memory: 512Mi
+            requests:
+              cpu: 100m
+              memory: 128Mi
+
+          ports:
+            - containerPort: 8080
+
+          startupProbe:
+            tcpSocket:
+              port: 8080
+            initialDelaySeconds: 5
+            periodSeconds: 5
+            failureThreshold: 30
+
+          readinessProbe:
+            tcpSocket:
+              port: 8080
+            initialDelaySeconds: 5
+            periodSeconds: 10
+
+          livenessProbe:
+            tcpSocket:
+              port: 8080
+            initialDelaySeconds: 15
+            periodSeconds: 20
+
+          envFrom:
+            - configMapRef:
+                name: emailservice-config
+
+          env:
+
+            - name: PORT
+              value: "8080"
+            - name: DISABLE_PROFILER
+              value: "1"
+            - name: ENABLE_PROFILER
+              value: "0"
+            - name: ENABLE_TRACING
+              value: "0"
+---
+# Source: ecommerce/templates/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend
+  namespace: ecommerce-helm
+
+  labels:
+    app.kubernetes.io/name: frontend
+    app.kubernetes.io/part-of: ecommerce-production-platform
+
+spec:
+  replicas: 1
+
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 0
+      maxSurge: 1
+
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: frontend
+
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: frontend
+        app.kubernetes.io/part-of: ecommerce-production-platform
+
+    spec:
+
+      serviceAccountName: ecommerce-sa
+
+      imagePullSecrets:
+
+        null
+
+
+      containers:
+        - name: frontend
+          image: "324352301255.dkr.ecr.ap-south-1.amazonaws.com/ecommerce/frontend:3f54f70aba100ffdc19042357e5bbd3390ae6802"
+          imagePullPolicy: IfNotPresent
+
+          securityContext:
+            runAsNonRoot: true
+            runAsUser: 1000
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: false
+
+            capabilities:
+              drop:
+                - ALL
+
+          resources:
+
+            limits:
+              cpu: 500m
+              memory: 512Mi
+            requests:
+              cpu: 100m
+              memory: 128Mi
+
+          ports:
+            - containerPort: 8080
+
+          startupProbe:
+            tcpSocket:
+              port: 8080
+            initialDelaySeconds: 5
+            periodSeconds: 5
+            failureThreshold: 30
+
+          readinessProbe:
+            tcpSocket:
+              port: 8080
+            initialDelaySeconds: 5
+            periodSeconds: 10
+
+          livenessProbe:
+            tcpSocket:
+              port: 8080
+            initialDelaySeconds: 15
+            periodSeconds: 20
+
+          envFrom:
+            - configMapRef:
+                name: frontend-config
+
+          env:
+
+            - name: PORT
+              value: "8080"
+            - name: LISTEN_ADDR
+              value: 0.0.0.0
+            - name: ENABLE_TRACING
+              value: "1"
+            - name: OTEL_EXPORTER_OTLP_ENDPOINT
+              value: http://otel-collector-opentelemetry-collector.opentelemetry.svc.cluster.local:4318
+            - name: OTEL_EXPORTER_OTLP_PROTOCOL
+              value: http/protobuf
+            - name: COLLECTOR_SERVICE_ADDR
+              value: otel-collector-opentelemetry-collector.opentelemetry.svc.cluster.local:4317
+            - name: ENABLE_PROFILER
+              value: "0"
+            - name: ENABLE_ASSISTANT
+              value: "false"
+            - name: PRODUCT_CATALOG_SERVICE_ADDR
+              value: productcatalogservice:3550
+            - name: CURRENCY_SERVICE_ADDR
+              value: currencyservice:7000
+            - name: CART_SERVICE_ADDR
+              value: cartservice:7070
+            - name: RECOMMENDATION_SERVICE_ADDR
+              value: recommendationservice:8080
+            - name: CHECKOUT_SERVICE_ADDR
+              value: checkoutservice:5050
+            - name: SHIPPING_SERVICE_ADDR
+              value: shippingservice:50051
+            - name: AD_SERVICE_ADDR
+              value: adservice:9555
+            - name: SHOPPING_ASSISTANT_SERVICE_ADDR
+              value: shoppingassistantservice:8080
+---
+# Source: ecommerce/templates/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: paymentservice
+  namespace: ecommerce-helm
+
+  labels:
+    app.kubernetes.io/name: paymentservice
+    app.kubernetes.io/part-of: ecommerce-production-platform
+
+spec:
+  replicas: 1
+
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 0
+      maxSurge: 1
+
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: paymentservice
+
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: paymentservice
+        app.kubernetes.io/part-of: ecommerce-production-platform
+
+    spec:
+
+      serviceAccountName: ecommerce-sa
+
+      imagePullSecrets:
+
+        null
+
+
+      containers:
+        - name: paymentservice
+          image: "324352301255.dkr.ecr.ap-south-1.amazonaws.com/ecommerce/paymentservice:3f54f70aba100ffdc19042357e5bbd3390ae6802"
+          imagePullPolicy: IfNotPresent
+
+          securityContext:
+            runAsNonRoot: true
+            runAsUser: 1000
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: false
+
+            capabilities:
+              drop:
+                - ALL
+
+          resources:
+
+            limits:
+              cpu: 500m
+              memory: 512Mi
+            requests:
+              cpu: 100m
+              memory: 128Mi
+
+          ports:
+            - containerPort: 50051
+
+          startupProbe:
+            tcpSocket:
+              port: 50051
+            initialDelaySeconds: 5
+            periodSeconds: 5
+            failureThreshold: 30
+
+          readinessProbe:
+            tcpSocket:
+              port: 50051
+            initialDelaySeconds: 5
+            periodSeconds: 10
+
+          livenessProbe:
+            tcpSocket:
+              port: 50051
+            initialDelaySeconds: 15
+            periodSeconds: 20
+
+          envFrom:
+            - configMapRef:
+                name: paymentservice-config
+
+          env:
+
+            - name: PORT
+              value: "50051"
+            - name: DISABLE_PROFILER
+              value: "1"
+            - name: ENABLE_PROFILER
+              value: "0"
+            - name: ENABLE_TRACING
+              value: "1"
+            - name: OTEL_EXPORTER_OTLP_ENDPOINT
+              value: http://otel-collector-opentelemetry-collector.opentelemetry.svc.cluster.local:4318
+            - name: OTEL_EXPORTER_OTLP_PROTOCOL
+              value: http/protobuf
+---
+# Source: ecommerce/templates/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: productcatalogservice
+  namespace: ecommerce-helm
+
+  labels:
+    app.kubernetes.io/name: productcatalogservice
+    app.kubernetes.io/part-of: ecommerce-production-platform
+
+spec:
+  replicas: 1
+
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 0
+      maxSurge: 1
+
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: productcatalogservice
+
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: productcatalogservice
+        app.kubernetes.io/part-of: ecommerce-production-platform
+
+    spec:
+
+      serviceAccountName: ecommerce-sa
+
+      imagePullSecrets:
+
+        null
+
+
+      containers:
+        - name: productcatalogservice
+          image: "324352301255.dkr.ecr.ap-south-1.amazonaws.com/ecommerce/productcatalogservice:3f54f70aba100ffdc19042357e5bbd3390ae6802"
+          imagePullPolicy: IfNotPresent
+
+          securityContext:
+            runAsNonRoot: true
+            runAsUser: 1000
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: false
+
+            capabilities:
+              drop:
+                - ALL
+
+          resources:
+
+            limits:
+              cpu: 500m
+              memory: 512Mi
+            requests:
+              cpu: 100m
+              memory: 128Mi
+
+          ports:
+            - containerPort: 3550
+
+          startupProbe:
+            tcpSocket:
+              port: 3550
+            initialDelaySeconds: 5
+            periodSeconds: 5
+            failureThreshold: 30
+
+          readinessProbe:
+            tcpSocket:
+              port: 3550
+            initialDelaySeconds: 5
+            periodSeconds: 10
+
+          livenessProbe:
+            tcpSocket:
+              port: 3550
+            initialDelaySeconds: 15
+            periodSeconds: 20
+
+          envFrom:
+            - configMapRef:
+                name: productcatalogservice-config
+
+          env:
+
+            - name: PORT
+              value: "3550"
+            - name: DISABLE_PROFILER
+              value: "1"
+            - name: ENABLE_PROFILER
+              value: "0"
+            - name: ENABLE_TRACING
+              value: "0"
+---
+# Source: ecommerce/templates/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: recommendationservice
+  namespace: ecommerce-helm
+
+  labels:
+    app.kubernetes.io/name: recommendationservice
+    app.kubernetes.io/part-of: ecommerce-production-platform
+
+spec:
+  replicas: 1
+
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 0
+      maxSurge: 1
+
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: recommendationservice
+
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: recommendationservice
+        app.kubernetes.io/part-of: ecommerce-production-platform
+
+    spec:
+
+      serviceAccountName: ecommerce-sa
+
+      imagePullSecrets:
+
+        null
+
+
+      containers:
+        - name: recommendationservice
+          image: "324352301255.dkr.ecr.ap-south-1.amazonaws.com/ecommerce/recommendationservice:3f54f70aba100ffdc19042357e5bbd3390ae6802"
+          imagePullPolicy: IfNotPresent
+
+          securityContext:
+            runAsNonRoot: true
+            runAsUser: 1000
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: false
+
+            capabilities:
+              drop:
+                - ALL
+
+          resources:
+
+            limits:
+              cpu: 500m
+              memory: 512Mi
+            requests:
+              cpu: 100m
+              memory: 128Mi
+
+          ports:
+            - containerPort: 8080
+
+          startupProbe:
+            tcpSocket:
+              port: 8080
+            initialDelaySeconds: 5
+            periodSeconds: 5
+            failureThreshold: 30
+
+          readinessProbe:
+            tcpSocket:
+              port: 8080
+            initialDelaySeconds: 5
+            periodSeconds: 10
+
+          livenessProbe:
+            tcpSocket:
+              port: 8080
+            initialDelaySeconds: 15
+            periodSeconds: 20
+
+          envFrom:
+            - configMapRef:
+                name: recommendationservice-config
+
+          env:
+
+            - name: PORT
+              value: "8080"
+            - name: PRODUCT_CATALOG_SERVICE_ADDR
+              value: productcatalogservice:3550
+            - name: DISABLE_PROFILER
+              value: "1"
+            - name: ENABLE_PROFILER
+              value: "0"
+            - name: ENABLE_TRACING
+              value: "0"
+---
+# Source: ecommerce/templates/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: redis-cart
+  namespace: ecommerce-helm
+
+  labels:
+    app.kubernetes.io/name: redis-cart
+    app.kubernetes.io/part-of: ecommerce-production-platform
+
+spec:
+  replicas: 1
+
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 0
+      maxSurge: 1
+
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: redis-cart
+
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: redis-cart
+        app.kubernetes.io/part-of: ecommerce-production-platform
+
+    spec:
+
+      serviceAccountName: ecommerce-sa
+
+      imagePullSecrets:
+
+        null
+
+
+      containers:
+        - name: redis-cart
+          image: "redis:7.2-alpine"
+          imagePullPolicy: IfNotPresent
+
+          securityContext:
+            runAsNonRoot: true
+            runAsUser: 1000
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: false
+
+            capabilities:
+              drop:
+                - ALL
+
+          resources:
+
+            limits:
+              cpu: 500m
+              memory: 512Mi
+            requests:
+              cpu: 100m
+              memory: 128Mi
+
+          ports:
+            - containerPort: 6379
+
+          volumeMounts:
+            - name: redis-storage
+              mountPath: /data
+
+          startupProbe:
+            tcpSocket:
+              port: 6379
+            initialDelaySeconds: 5
+            periodSeconds: 5
+            failureThreshold: 30
+
+          readinessProbe:
+            tcpSocket:
+              port: 6379
+            initialDelaySeconds: 5
+            periodSeconds: 10
+
+          livenessProbe:
+            tcpSocket:
+              port: 6379
+            initialDelaySeconds: 15
+            periodSeconds: 20
+
+          envFrom:
+            - configMapRef:
+                name: redis-cart-config
+
+          env:
+
+            - name: REDIS_MODE
+              value: standalone
+
+      volumes:
+        - name: redis-storage
+          persistentVolumeClaim:
+            claimName: redis-pvc
+---
+# Source: ecommerce/templates/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: shippingservice
+  namespace: ecommerce-helm
+
+  labels:
+    app.kubernetes.io/name: shippingservice
+    app.kubernetes.io/part-of: ecommerce-production-platform
+
+spec:
+  replicas: 1
+
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 0
+      maxSurge: 1
+
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: shippingservice
+
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: shippingservice
+        app.kubernetes.io/part-of: ecommerce-production-platform
+
+    spec:
+
+      serviceAccountName: ecommerce-sa
+
+      imagePullSecrets:
+
+        null
+
+
+      containers:
+        - name: shippingservice
+          image: "324352301255.dkr.ecr.ap-south-1.amazonaws.com/ecommerce/shippingservice:3f54f70aba100ffdc19042357e5bbd3390ae6802"
+          imagePullPolicy: IfNotPresent
+
+          securityContext:
+            runAsNonRoot: true
+            runAsUser: 1000
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: false
+
+            capabilities:
+              drop:
+                - ALL
+
+          resources:
+
+            limits:
+              cpu: 500m
+              memory: 512Mi
+            requests:
+              cpu: 100m
+              memory: 128Mi
+
+          ports:
+            - containerPort: 50051
+
+          startupProbe:
+            tcpSocket:
+              port: 50051
+            initialDelaySeconds: 5
+            periodSeconds: 5
+            failureThreshold: 30
+
+          readinessProbe:
+            tcpSocket:
+              port: 50051
+            initialDelaySeconds: 5
+            periodSeconds: 10
+
+          livenessProbe:
+            tcpSocket:
+              port: 50051
+            initialDelaySeconds: 15
+            periodSeconds: 20
+
+          envFrom:
+            - configMapRef:
+                name: shippingservice-config
+
+          env:
+
+            - name: PORT
+              value: "50051"
+            - name: DISABLE_PROFILER
+              value: "1"
+            - name: ENABLE_PROFILER
+              value: "0"
+            - name: ENABLE_TRACING
+              value: "0"
+---
+# Source: ecommerce/templates/hpa.yaml
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: adservice
+  namespace: ecommerce-helm
+
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: adservice
+
+  minReplicas: 1
+  maxReplicas: 3
+
+  metrics:
+    - type: Resource
+      resource:
+        name: cpu
+        target:
+          type: Utilization
+          averageUtilization: 70
+---
+# Source: ecommerce/templates/hpa.yaml
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: cartservice
+  namespace: ecommerce-helm
+
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: cartservice
+
+  minReplicas: 1
+  maxReplicas: 3
+
+  metrics:
+    - type: Resource
+      resource:
+        name: cpu
+        target:
+          type: Utilization
+          averageUtilization: 70
+---
+# Source: ecommerce/templates/hpa.yaml
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: checkoutservice
+  namespace: ecommerce-helm
+
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: checkoutservice
+
+  minReplicas: 1
+  maxReplicas: 3
+
+  metrics:
+    - type: Resource
+      resource:
+        name: cpu
+        target:
+          type: Utilization
+          averageUtilization: 70
+---
+# Source: ecommerce/templates/hpa.yaml
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: currencyservice
+  namespace: ecommerce-helm
+
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: currencyservice
+
+  minReplicas: 1
+  maxReplicas: 3
+
+  metrics:
+    - type: Resource
+      resource:
+        name: cpu
+        target:
+          type: Utilization
+          averageUtilization: 70
+---
+# Source: ecommerce/templates/hpa.yaml
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: emailservice
+  namespace: ecommerce-helm
+
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: emailservice
+
+  minReplicas: 1
+  maxReplicas: 3
+
+  metrics:
+    - type: Resource
+      resource:
+        name: cpu
+        target:
+          type: Utilization
+          averageUtilization: 70
+---
+# Source: ecommerce/templates/hpa.yaml
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: frontend
+  namespace: ecommerce-helm
+
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: frontend
+
+  minReplicas: 1
+  maxReplicas: 3
+
+  metrics:
+    - type: Resource
+      resource:
+        name: cpu
+        target:
+          type: Utilization
+          averageUtilization: 70
+---
+# Source: ecommerce/templates/hpa.yaml
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: paymentservice
+  namespace: ecommerce-helm
+
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: paymentservice
+
+  minReplicas: 1
+  maxReplicas: 3
+
+  metrics:
+    - type: Resource
+      resource:
+        name: cpu
+        target:
+          type: Utilization
+          averageUtilization: 70
+---
+# Source: ecommerce/templates/hpa.yaml
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: productcatalogservice
+  namespace: ecommerce-helm
+
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: productcatalogservice
+
+  minReplicas: 1
+  maxReplicas: 3
+
+  metrics:
+    - type: Resource
+      resource:
+        name: cpu
+        target:
+          type: Utilization
+          averageUtilization: 70
+---
+# Source: ecommerce/templates/hpa.yaml
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: recommendationservice
+  namespace: ecommerce-helm
+
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: recommendationservice
+
+  minReplicas: 1
+  maxReplicas: 3
+
+  metrics:
+    - type: Resource
+      resource:
+        name: cpu
+        target:
+          type: Utilization
+          averageUtilization: 70
+---
+# Source: ecommerce/templates/hpa.yaml
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: redis-cart
+  namespace: ecommerce-helm
+
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: redis-cart
+
+  minReplicas: 1
+  maxReplicas: 3
+
+  metrics:
+    - type: Resource
+      resource:
+        name: cpu
+        target:
+          type: Utilization
+          averageUtilization: 70
+---
+# Source: ecommerce/templates/hpa.yaml
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: shippingservice
+  namespace: ecommerce-helm
+
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: shippingservice
+
+  minReplicas: 1
+  maxReplicas: 3
+
+  metrics:
+    - type: Resource
+      resource:
+        name: cpu
+        target:
+          type: Utilization
+          averageUtilization: 70
+---
+# Source: ecommerce/templates/ingress.yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+
+metadata:
+  name: ecommerce
+
+spec:
+  ingressClassName: traefik
+
+  rules:
+    - host: 
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: frontend
+                port:
+                  number: 8080
