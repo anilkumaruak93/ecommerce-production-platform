@@ -94,24 +94,26 @@ jobs:
           docker push \
           324352301255.dkr.ecr.ap-south-1.amazonaws.com/ecommerce/${{ matrix.service }}:${{ github.sha }}
 
-      - name: Configure Git
-        run: |
-          git config --global user.name "github-actions"
-          git config --global user.email "github-actions@github.com"
 
-      - name: Update Frontend Tag
-        if: matrix.service == 'frontend'
-        run: |
-          sed -i '/frontend:/,/tag:/s/tag:.*/tag: '${{ github.sha }}'/' helm/ecommerce/values.yaml
+  deploy:
+    needs: build-and-push
 
+    runs-on: self-hosted
 
-      - name: Commit Changes
-        if: matrix.service == 'frontend'
-        run: |
-          git add helm/ecommerce/values.yaml
-          git commit -m "ci: update frontend image tag to ${{ github.sha }}" || echo "No changes to commit"
+    steps:
 
-      - name: Push Changes
-        if: matrix.service == 'frontend'
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Deploy Application
         run: |
-          git push origin feature
+          cd $GITHUB_WORKSPACE
+          helm upgrade --install ecommerce ./helm/ecommerce -n ecommerce-helm
+
+      - name: Wait for Frontend Rollout
+        run: |
+          kubectl rollout status deployment/frontend -n ecommerce-helm
+
+      - name: Verify Application
+        run: |
+          curl -f http://localhost
