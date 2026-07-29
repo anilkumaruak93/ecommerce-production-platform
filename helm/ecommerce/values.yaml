@@ -6,7 +6,7 @@ services:
 
   frontend:
     image: 324352301255.dkr.ecr.ap-south-1.amazonaws.com/ecommerce/frontend
-tag: 619a8fabedc6f29f11d456fdd6aa38c3843d4eaf
+    tag: 619a8fabedc6f29f11d456fdd6aa38c3843d4eaf
     replicas: 1
     port: 8080
     serviceType: NodePort
@@ -57,7 +57,7 @@ tag: 619a8fabedc6f29f11d456fdd6aa38c3843d4eaf
 
   currencyservice:
     image: 324352301255.dkr.ecr.ap-south-1.amazonaws.com/ecommerce/currencyservice
-tag: 619a8fabedc6f29f11d456fdd6aa38c3843d4eaf
+    tag: 619a8fabedc6f29f11d456fdd6aa38c3843d4eaf
     replicas: 1
     port: 7000
     serviceType: ClusterIP
@@ -80,7 +80,7 @@ tag: 619a8fabedc6f29f11d456fdd6aa38c3843d4eaf
         value: "0"
   productcatalogservice:
     image: 324352301255.dkr.ecr.ap-south-1.amazonaws.com/ecommerce/productcatalogservice
-tag: 619a8fabedc6f29f11d456fdd6aa38c3843d4eaf
+    tag: 619a8fabedc6f29f11d456fdd6aa38c3843d4eaf
     replicas: 1
     port: 3550
     serviceType: ClusterIP
@@ -105,7 +105,7 @@ tag: 619a8fabedc6f29f11d456fdd6aa38c3843d4eaf
 
   recommendationservice:
     image: 324352301255.dkr.ecr.ap-south-1.amazonaws.com/ecommerce/recommendationservice
-tag: 619a8fabedc6f29f11d456fdd6aa38c3843d4eaf
+    tag: 619a8fabedc6f29f11d456fdd6aa38c3843d4eaf
     replicas: 1
     port: 8080
     serviceType: ClusterIP
@@ -131,7 +131,7 @@ tag: 619a8fabedc6f29f11d456fdd6aa38c3843d4eaf
         value: "0"
   adservice:
     image: 324352301255.dkr.ecr.ap-south-1.amazonaws.com/ecommerce/adservice
-tag: 619a8fabedc6f29f11d456fdd6aa38c3843d4eaf
+    tag: 619a8fabedc6f29f11d456fdd6aa38c3843d4eaf
     replicas: 1
     port: 9555
     serviceType: ClusterIP
@@ -157,7 +157,7 @@ tag: 619a8fabedc6f29f11d456fdd6aa38c3843d4eaf
 
   shippingservice:
     image: 324352301255.dkr.ecr.ap-south-1.amazonaws.com/ecommerce/shippingservice
-tag: 619a8fabedc6f29f11d456fdd6aa38c3843d4eaf
+    tag: 619a8fabedc6f29f11d456fdd6aa38c3843d4eaf
     replicas: 1
     port: 50051
     serviceType: ClusterIP
@@ -181,7 +181,7 @@ tag: 619a8fabedc6f29f11d456fdd6aa38c3843d4eaf
         value: "0"
   paymentservice:
     image: 324352301255.dkr.ecr.ap-south-1.amazonaws.com/ecommerce/paymentservice
-tag: 619a8fabedc6f29f11d456fdd6aa38c3843d4eaf
+    tag: 619a8fabedc6f29f11d456fdd6aa38c3843d4eaf
     replicas: 1
     port: 50051
     serviceType: ClusterIP
@@ -213,7 +213,7 @@ tag: 619a8fabedc6f29f11d456fdd6aa38c3843d4eaf
 
   checkoutservice:
     image: 324352301255.dkr.ecr.ap-south-1.amazonaws.com/ecommerce/checkoutservice
-tag: 619a8fabedc6f29f11d456fdd6aa38c3843d4eaf
+    tag: 619a8fabedc6f29f11d456fdd6aa38c3843d4eaf
     replicas: 1
     port: 5050
     serviceType: ClusterIP
@@ -257,7 +257,7 @@ tag: 619a8fabedc6f29f11d456fdd6aa38c3843d4eaf
 
   emailservice:
     image: 324352301255.dkr.ecr.ap-south-1.amazonaws.com/ecommerce/emailservice
-tag: 619a8fabedc6f29f11d456fdd6aa38c3843d4eaf
+    tag: 619a8fabedc6f29f11d456fdd6aa38c3843d4eaf
     replicas: 1
     port: 8080
     serviceType: ClusterIP
@@ -283,7 +283,7 @@ tag: 619a8fabedc6f29f11d456fdd6aa38c3843d4eaf
 
   cartservice:
     image: 324352301255.dkr.ecr.ap-south-1.amazonaws.com/ecommerce/cartservice
-tag: 619a8fabedc6f29f11d456fdd6aa38c3843d4eaf
+    tag: 619a8fabedc6f29f11d456fdd6aa38c3843d4eaf
     replicas: 1
     port: 7070
     serviceType: ClusterIP
@@ -311,7 +311,7 @@ tag: 619a8fabedc6f29f11d456fdd6aa38c3843d4eaf
 
   redis-cart:
     image: redis
-    tag: 51f759b433bce2fa2a3ea00ad0444288508c82fe
+    tag: "7.2-alpine"
     replicas: 1
     port: 6379
     serviceType: ClusterIP
