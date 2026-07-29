@@ -311,7 +311,7 @@ services:
 
   redis-cart:
     image: redis
-    tag: e9bddb860fcb5c7647e2c2e5a89b3ef439504746
+    tag: "7.2-alpine"
     replicas: 1
     port: 6379
     serviceType: ClusterIP
