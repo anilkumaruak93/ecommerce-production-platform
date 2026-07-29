@@ -1,17 +1,13 @@
 imagePullSecrets:
   - name: ecr-registry-credentials
-
-
 services:
-
   frontend:
     image: 324352301255.dkr.ecr.ap-south-1.amazonaws.com/ecommerce/frontend
-    tag: 619a8fabedc6f29f11d456fdd6aa38c3843d4eaf
+    tag: 84cb43cd75e99909beb830524b3688eda5535871
     replicas: 1
     port: 8080
     serviceType: NodePort
     nodePort: 30081
-
     resources:
       requests:
         cpu: "100m"
@@ -19,7 +15,6 @@ services:
       limits:
         cpu: "500m"
         memory: "512Mi"
-
     env:
       - name: PORT
         value: "8080"
@@ -38,7 +33,6 @@ services:
       - name: ENABLE_ASSISTANT
         value: "false"
       - name: PRODUCT_CATALOG_SERVICE_ADDR
-
         value: "productcatalogservice:3550"
       - name: CURRENCY_SERVICE_ADDR
         value: "currencyservice:7000"
@@ -54,14 +48,12 @@ services:
         value: "adservice:9555"
       - name: SHOPPING_ASSISTANT_SERVICE_ADDR
         value: "shoppingassistantservice:8080"
-
   currencyservice:
     image: 324352301255.dkr.ecr.ap-south-1.amazonaws.com/ecommerce/currencyservice
-    tag: 619a8fabedc6f29f11d456fdd6aa38c3843d4eaf
+    tag: 84cb43cd75e99909beb830524b3688eda5535871
     replicas: 1
     port: 7000
     serviceType: ClusterIP
-
     resources:
       requests:
         cpu: "100m"
@@ -80,11 +72,10 @@ services:
         value: "0"
   productcatalogservice:
     image: 324352301255.dkr.ecr.ap-south-1.amazonaws.com/ecommerce/productcatalogservice
-    tag: 619a8fabedc6f29f11d456fdd6aa38c3843d4eaf
+    tag: 84cb43cd75e99909beb830524b3688eda5535871
     replicas: 1
     port: 3550
     serviceType: ClusterIP
-
     resources:
       requests:
         cpu: "100m"
@@ -92,7 +83,6 @@ services:
       limits:
         cpu: "500m"
         memory: "512Mi"
-
     env:
       - name: PORT
         value: "3550"
@@ -102,14 +92,12 @@ services:
         value: "0"
       - name: ENABLE_TRACING
         value: "0"
-
   recommendationservice:
     image: 324352301255.dkr.ecr.ap-south-1.amazonaws.com/ecommerce/recommendationservice
-    tag: 619a8fabedc6f29f11d456fdd6aa38c3843d4eaf
+    tag: 84cb43cd75e99909beb830524b3688eda5535871
     replicas: 1
     port: 8080
     serviceType: ClusterIP
-
     resources:
       requests:
         cpu: "100m"
@@ -117,7 +105,6 @@ services:
       limits:
         cpu: "500m"
         memory: "512Mi"
-
     env:
       - name: PORT
         value: "8080"
@@ -131,11 +118,10 @@ services:
         value: "0"
   adservice:
     image: 324352301255.dkr.ecr.ap-south-1.amazonaws.com/ecommerce/adservice
-    tag: 619a8fabedc6f29f11d456fdd6aa38c3843d4eaf
+    tag: 84cb43cd75e99909beb830524b3688eda5535871
     replicas: 1
     port: 9555
     serviceType: ClusterIP
-
     resources:
       requests:
         cpu: "100m"
@@ -143,7 +129,6 @@ services:
       limits:
         cpu: "500m"
         memory: "512Mi"
-
     env:
       - name: PORT
         value: "9555"
@@ -153,15 +138,12 @@ services:
         value: "0"
       - name: ENABLE_TRACING
         value: "0"
-
-
   shippingservice:
     image: 324352301255.dkr.ecr.ap-south-1.amazonaws.com/ecommerce/shippingservice
-    tag: 619a8fabedc6f29f11d456fdd6aa38c3843d4eaf
+    tag: 84cb43cd75e99909beb830524b3688eda5535871
     replicas: 1
     port: 50051
     serviceType: ClusterIP
-
     resources:
       requests:
         cpu: "100m"
@@ -169,7 +151,6 @@ services:
       limits:
         cpu: "500m"
         memory: "512Mi"
-
     env:
       - name: PORT
         value: "50051"
@@ -181,11 +162,10 @@ services:
         value: "0"
   paymentservice:
     image: 324352301255.dkr.ecr.ap-south-1.amazonaws.com/ecommerce/paymentservice
-    tag: 619a8fabedc6f29f11d456fdd6aa38c3843d4eaf
+    tag: 84cb43cd75e99909beb830524b3688eda5535871
     replicas: 1
     port: 50051
     serviceType: ClusterIP
-
     resources:
       requests:
         cpu: "100m"
@@ -193,7 +173,6 @@ services:
       limits:
         cpu: "500m"
         memory: "512Mi"
-
     env:
       - name: PORT
         value: "50051"
@@ -203,21 +182,16 @@ services:
         value: "0"
       - name: ENABLE_TRACING
         value: "1"
-
       - name: OTEL_EXPORTER_OTLP_ENDPOINT
         value: "http://otel-collector-opentelemetry-collector.opentelemetry.svc.cluster.local:4318"
-
       - name: OTEL_EXPORTER_OTLP_PROTOCOL
         value: "http/protobuf"
-
-
   checkoutservice:
     image: 324352301255.dkr.ecr.ap-south-1.amazonaws.com/ecommerce/checkoutservice
-    tag: 619a8fabedc6f29f11d456fdd6aa38c3843d4eaf
+    tag: 84cb43cd75e99909beb830524b3688eda5535871
     replicas: 1
     port: 5050
     serviceType: ClusterIP
-
     resources:
       requests:
         cpu: "100m"
@@ -225,7 +199,6 @@ services:
       limits:
         cpu: "500m"
         memory: "512Mi"
-
     env:
       - name: PORT
         value: "5050"
@@ -253,15 +226,12 @@ services:
         value: "http/protobuf"
       - name: COLLECTOR_SERVICE_ADDR
         value: "otel-collector-opentelemetry-collector.opentelemetry.svc.cluster.local:4317"
-
-
   emailservice:
     image: 324352301255.dkr.ecr.ap-south-1.amazonaws.com/ecommerce/emailservice
-    tag: 619a8fabedc6f29f11d456fdd6aa38c3843d4eaf
+    tag: 84cb43cd75e99909beb830524b3688eda5535871
     replicas: 1
     port: 8080
     serviceType: ClusterIP
-
     resources:
       requests:
         cpu: "100m"
@@ -269,8 +239,6 @@ services:
       limits:
         cpu: "500m"
         memory: "512Mi"
-
-
     env:
       - name: PORT
         value: "8080"
@@ -280,14 +248,12 @@ services:
         value: "0"
       - name: ENABLE_TRACING
         value: "0"
-
   cartservice:
     image: 324352301255.dkr.ecr.ap-south-1.amazonaws.com/ecommerce/cartservice
-    tag: 619a8fabedc6f29f11d456fdd6aa38c3843d4eaf
+    tag: 84cb43cd75e99909beb830524b3688eda5535871
     replicas: 1
     port: 7070
     serviceType: ClusterIP
-
     resources:
       requests:
         cpu: "100m"
@@ -295,7 +261,6 @@ services:
       limits:
         cpu: "500m"
         memory: "512Mi"
-
     env:
       - name: REDIS_ADDR
         value: "redis-cart:6379"
@@ -303,19 +268,16 @@ services:
         value: "7070"
       - name: DISABLE_PROFILER
         value: "1"
-
       - name: ENABLE_PROFILER
         value: "0"
       - name: ENABLE_TRACING
         value: "0"
-
   redis-cart:
     image: redis
     tag: "7.2-alpine"
     replicas: 1
     port: 6379
     serviceType: ClusterIP
-
     resources:
       requests:
         cpu: "100m"
@@ -323,13 +285,10 @@ services:
       limits:
         cpu: "500m"
         memory: "512Mi"
-
     env:
       - name: REDIS_MODE
         value: "standalone"
-
 ingress:
   enabled: true
   className: traefik
   host: ""
-
