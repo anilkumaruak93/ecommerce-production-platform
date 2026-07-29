@@ -107,18 +107,17 @@ jobs:
           fetch-depth: 0
           token: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Install yq
+        run: |
+          sudo wget -qO /usr/local/bin/yq https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64
+          sudo chmod +x /usr/local/bin/yq
+
       - name: Update Helm Values
         run: |
           SERVICES="frontend cartservice checkoutservice currencyservice productcatalogservice recommendationservice adservice shippingservice paymentservice emailservice"
 
           for SERVICE in $SERVICES; do
-            awk -v svc="$SERVICE" -v sha="$GITHUB_SHA" '
-            $1 == svc ":" { in_service=1 }
-            in_service && $1 == "tag:" { $2=sha; in_service=0 }
-            { print }
-            ' helm/ecommerce/values.yaml > /tmp/values.yaml
-
-            mv /tmp/values.yaml helm/ecommerce/values.yaml
+            yq -i ".services.${SERVICE}.tag = env(GITHUB_SHA)" helm/ecommerce/values.yaml
           done
 
       - name: Commit Updated values.yaml
@@ -131,7 +130,6 @@ jobs:
           git diff --cached --quiet || git commit -m "ci: update image tags to ${GITHUB_SHA}"
 
           git push
-
 
 #  deploy:
 #   needs: build-and-push
