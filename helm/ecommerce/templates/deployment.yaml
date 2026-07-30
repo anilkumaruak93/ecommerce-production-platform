@@ -28,6 +28,10 @@ spec:
       labels:
         app.kubernetes.io/name: {{ $name }}
         app.kubernetes.io/part-of: ecommerce-production-platform
+{{- if eq $name "frontend" }}
+        version: v1
+{{- end }}
+
 
     spec:
 
