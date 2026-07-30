@@ -3,7 +3,7 @@ imagePullSecrets:
 services:
   frontend:
     image: 324352301255.dkr.ecr.ap-south-1.amazonaws.com/ecommerce/frontend
-    tag: 94054ef6bebf0ad0b75dad17cdc612940d31acb9
+    tag: 377e5d83dba386ac7f8bf3ae4766457ba21c2241
     replicas: 2
     port: 8080
     serviceType: NodePort
@@ -50,7 +50,7 @@ services:
         value: "shoppingassistantservice:8080"
   currencyservice:
     image: 324352301255.dkr.ecr.ap-south-1.amazonaws.com/ecommerce/currencyservice
-    tag: 94054ef6bebf0ad0b75dad17cdc612940d31acb9
+    tag: 377e5d83dba386ac7f8bf3ae4766457ba21c2241
     replicas: 2
     port: 7000
     serviceType: ClusterIP
@@ -72,7 +72,7 @@ services:
         value: "0"
   productcatalogservice:
     image: 324352301255.dkr.ecr.ap-south-1.amazonaws.com/ecommerce/productcatalogservice
-    tag: 94054ef6bebf0ad0b75dad17cdc612940d31acb9
+    tag: 377e5d83dba386ac7f8bf3ae4766457ba21c2241
     replicas: 2
     port: 3550
     serviceType: ClusterIP
@@ -94,7 +94,7 @@ services:
         value: "0"
   recommendationservice:
     image: 324352301255.dkr.ecr.ap-south-1.amazonaws.com/ecommerce/recommendationservice
-    tag: 94054ef6bebf0ad0b75dad17cdc612940d31acb9
+    tag: 377e5d83dba386ac7f8bf3ae4766457ba21c2241
     replicas: 2
     port: 8080
     serviceType: ClusterIP
@@ -118,7 +118,7 @@ services:
         value: "0"
   adservice:
     image: 324352301255.dkr.ecr.ap-south-1.amazonaws.com/ecommerce/adservice
-    tag: 94054ef6bebf0ad0b75dad17cdc612940d31acb9
+    tag: 377e5d83dba386ac7f8bf3ae4766457ba21c2241
     replicas: 1
     port: 9555
     serviceType: ClusterIP
@@ -140,7 +140,7 @@ services:
         value: "0"
   shippingservice:
     image: 324352301255.dkr.ecr.ap-south-1.amazonaws.com/ecommerce/shippingservice
-    tag: 94054ef6bebf0ad0b75dad17cdc612940d31acb9
+    tag: 377e5d83dba386ac7f8bf3ae4766457ba21c2241
     replicas: 2
     port: 50051
     serviceType: ClusterIP
@@ -162,7 +162,7 @@ services:
         value: "0"
   paymentservice:
     image: 324352301255.dkr.ecr.ap-south-1.amazonaws.com/ecommerce/paymentservice
-    tag: 94054ef6bebf0ad0b75dad17cdc612940d31acb9
+    tag: 377e5d83dba386ac7f8bf3ae4766457ba21c2241
     replicas: 2
     port: 50051
     serviceType: ClusterIP
@@ -188,7 +188,7 @@ services:
         value: "http/protobuf"
   checkoutservice:
     image: 324352301255.dkr.ecr.ap-south-1.amazonaws.com/ecommerce/checkoutservice
-    tag: 94054ef6bebf0ad0b75dad17cdc612940d31acb9
+    tag: 377e5d83dba386ac7f8bf3ae4766457ba21c2241
     replicas: 2
     port: 5050
     serviceType: ClusterIP
@@ -228,7 +228,7 @@ services:
         value: "otel-collector-opentelemetry-collector.opentelemetry.svc.cluster.local:4317"
   emailservice:
     image: 324352301255.dkr.ecr.ap-south-1.amazonaws.com/ecommerce/emailservice
-    tag: 94054ef6bebf0ad0b75dad17cdc612940d31acb9
+    tag: 377e5d83dba386ac7f8bf3ae4766457ba21c2241
     replicas: 2
     port: 8080
     serviceType: ClusterIP
@@ -250,7 +250,7 @@ services:
         value: "0"
   cartservice:
     image: 324352301255.dkr.ecr.ap-south-1.amazonaws.com/ecommerce/cartservice
-    tag: 94054ef6bebf0ad0b75dad17cdc612940d31acb9
+    tag: 377e5d83dba386ac7f8bf3ae4766457ba21c2241
     replicas: 2
     port: 7070
     serviceType: ClusterIP
