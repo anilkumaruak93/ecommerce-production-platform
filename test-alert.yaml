@@ -1,24 +1,22 @@
 apiVersion: monitoring.coreos.com/v1
 kind: PrometheusRule
+
 metadata:
   name: test-alert
   namespace: monitoring
+  labels:
+    release: monitoring
 
 spec:
   groups:
-  - name: test.rules
-
-    rules:
-    - alert: TestAlert
-
-      expr: vector(1)
-
-      for: 1m
-
-      labels:
-        severity: critical
-
-      annotations:
-        summary: "Test Alert"
-
-        description: "Alertmanager email test"
+    - name: test.rules
+      rules:
+        - alert: TestAlert
+          expr: vector(1)
+          for: 1m
+          labels:
+            severity: critical
+            namespace: monitoring
+          annotations:
+            summary: "Test Alert"
+            description: "Alertmanager email test"

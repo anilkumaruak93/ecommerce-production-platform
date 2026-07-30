@@ -4,24 +4,26 @@ kind: AlertmanagerConfig
 metadata:
   name: gmail-config
   namespace: monitoring
+  labels:
+    release: monitoring
 
 spec:
   route:
     receiver: gmail
+    groupBy:
+      - alertname
 
   receivers:
     - name: gmail
       emailConfigs:
-        - to: anilkumardevops190@gmail.com
-          from: anilkumardevops190@gmail.com
-          smarthost: smtp.gmail.com:587
+        - to: "anilkumaruak93@gmail.com"
+          from: "anilkumaruak93@gmail.com"
+          smarthost: "smtp.gmail.com:587"
 
-          authUsername:
-            name: gmail-smtp-secret
-            key: username
+          authUsername: "anilkumaruak93@gmail.com"
 
           authPassword:
-            name: gmail-smtp-secret
+            name: alertmanager-gmail-secret
             key: password
 
           requireTLS: true

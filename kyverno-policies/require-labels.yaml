@@ -1,0 +1,26 @@
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: require-labels
+spec:
+  validationFailureAction: Enforce
+  background: true
+
+  rules:
+    - name: require-standard-labels
+      match:
+        any:
+          - resources:
+              kinds:
+                - Deployment
+              namespaces:
+                - ecommerce-helm
+
+      validate:
+        message: "Standard Kubernetes labels are required."
+
+        pattern:
+          metadata:
+            labels:
+              app.kubernetes.io/name: "?*"
+              app.kubernetes.io/part-of: "?*"

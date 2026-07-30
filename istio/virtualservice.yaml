@@ -1,0 +1,31 @@
+apiVersion: networking.istio.io/v1
+kind: VirtualService
+metadata:
+  name: ecommerce-virtualservice
+  namespace: ecommerce-helm
+spec:
+  hosts:
+    - "*"
+
+  gateways:
+    - ecommerce-gateway
+
+  http:
+    - fault:
+        delay:
+          percentage:
+            value: 20
+          fixedDelay: 5s
+
+      timeout: 5s
+
+      retries:
+        attempts: 3
+        perTryTimeout: 2s
+        retryOn: gateway-error,connect-failure,refused-stream,5xx
+
+      route:
+        - destination:
+            host: frontend
+            port:
+              number: 8080

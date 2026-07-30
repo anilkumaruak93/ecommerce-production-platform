@@ -1,0 +1,27 @@
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: require-ecr-images
+spec:
+  validationFailureAction: Enforce
+  background: true
+
+  rules:
+    - name: only-allow-ecr-images
+      match:
+        any:
+          - resources:
+              kinds:
+                - Deployment
+              namespaces:
+                - ecommerce-helm
+
+      validate:
+        message: "Only images from AWS ECR are allowed."
+
+        pattern:
+          spec:
+            template:
+              spec:
+                containers:
+                  - image: "324352301255.dkr.ecr.ap-south-1.amazonaws.com/*"

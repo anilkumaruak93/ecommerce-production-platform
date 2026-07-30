@@ -1,0 +1,30 @@
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: require-security-context
+spec:
+  validationFailureAction: Enforce
+  background: true
+
+  rules:
+    - name: validate-security-context
+      match:
+        any:
+          - resources:
+              kinds:
+                - Deployment
+              namespaces:
+                - ecommerce-helm
+
+      validate:
+        message: "Containers must run as non-root and must not allow privilege escalation."
+
+        pattern:
+          spec:
+            template:
+              spec:
+                securityContext:
+                  runAsNonRoot: true
+                containers:
+                  - securityContext:
+                      allowPrivilegeEscalation: false

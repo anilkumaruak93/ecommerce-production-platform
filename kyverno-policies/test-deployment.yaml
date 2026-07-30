@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kyverno-test
+  namespace: ecommerce-helm
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kyverno-test
+  template:
+    metadata:
+      labels:
+        app: kyverno-test
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:latest
