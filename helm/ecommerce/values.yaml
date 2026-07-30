@@ -3,13 +3,8 @@ imagePullSecrets:
 services:
   frontend:
     image: 324352301255.dkr.ecr.ap-south-1.amazonaws.com/ecommerce/frontend
-<<<<<<< HEAD
     tag: 84cb43cd75e99909beb830524b3688eda5535871
-    replicas: 1
-=======
-    tag: 619a8fabedc6f29f11d456fdd6aa38c3843d4eaf
     replicas: 2
->>>>>>> bda5e48 (Increase replicas for production high availability)
     port: 8080
     serviceType: NodePort
     nodePort: 30081
@@ -55,13 +50,8 @@ services:
         value: "shoppingassistantservice:8080"
   currencyservice:
     image: 324352301255.dkr.ecr.ap-south-1.amazonaws.com/ecommerce/currencyservice
-<<<<<<< HEAD
     tag: 84cb43cd75e99909beb830524b3688eda5535871
-    replicas: 1
-=======
-    tag: 619a8fabedc6f29f11d456fdd6aa38c3843d4eaf
     replicas: 2
->>>>>>> bda5e48 (Increase replicas for production high availability)
     port: 7000
     serviceType: ClusterIP
     resources:
@@ -82,13 +72,8 @@ services:
         value: "0"
   productcatalogservice:
     image: 324352301255.dkr.ecr.ap-south-1.amazonaws.com/ecommerce/productcatalogservice
-<<<<<<< HEAD
     tag: 84cb43cd75e99909beb830524b3688eda5535871
-    replicas: 1
-=======
-    tag: 619a8fabedc6f29f11d456fdd6aa38c3843d4eaf
     replicas: 2
->>>>>>> bda5e48 (Increase replicas for production high availability)
     port: 3550
     serviceType: ClusterIP
     resources:
@@ -109,13 +94,8 @@ services:
         value: "0"
   recommendationservice:
     image: 324352301255.dkr.ecr.ap-south-1.amazonaws.com/ecommerce/recommendationservice
-<<<<<<< HEAD
     tag: 84cb43cd75e99909beb830524b3688eda5535871
-    replicas: 1
-=======
-    tag: 619a8fabedc6f29f11d456fdd6aa38c3843d4eaf
     replicas: 2
->>>>>>> bda5e48 (Increase replicas for production high availability)
     port: 8080
     serviceType: ClusterIP
     resources:
@@ -160,13 +140,8 @@ services:
         value: "0"
   shippingservice:
     image: 324352301255.dkr.ecr.ap-south-1.amazonaws.com/ecommerce/shippingservice
-<<<<<<< HEAD
     tag: 84cb43cd75e99909beb830524b3688eda5535871
-    replicas: 1
-=======
-    tag: 619a8fabedc6f29f11d456fdd6aa38c3843d4eaf
     replicas: 2
->>>>>>> bda5e48 (Increase replicas for production high availability)
     port: 50051
     serviceType: ClusterIP
     resources:
@@ -187,13 +162,8 @@ services:
         value: "0"
   paymentservice:
     image: 324352301255.dkr.ecr.ap-south-1.amazonaws.com/ecommerce/paymentservice
-<<<<<<< HEAD
     tag: 84cb43cd75e99909beb830524b3688eda5535871
-    replicas: 1
-=======
-    tag: 619a8fabedc6f29f11d456fdd6aa38c3843d4eaf
     replicas: 2
->>>>>>> bda5e48 (Increase replicas for production high availability)
     port: 50051
     serviceType: ClusterIP
     resources:
@@ -218,13 +188,8 @@ services:
         value: "http/protobuf"
   checkoutservice:
     image: 324352301255.dkr.ecr.ap-south-1.amazonaws.com/ecommerce/checkoutservice
-<<<<<<< HEAD
     tag: 84cb43cd75e99909beb830524b3688eda5535871
-    replicas: 1
-=======
-    tag: 619a8fabedc6f29f11d456fdd6aa38c3843d4eaf
     replicas: 2
->>>>>>> bda5e48 (Increase replicas for production high availability)
     port: 5050
     serviceType: ClusterIP
     resources:
@@ -263,13 +228,8 @@ services:
         value: "otel-collector-opentelemetry-collector.opentelemetry.svc.cluster.local:4317"
   emailservice:
     image: 324352301255.dkr.ecr.ap-south-1.amazonaws.com/ecommerce/emailservice
-<<<<<<< HEAD
     tag: 84cb43cd75e99909beb830524b3688eda5535871
-    replicas: 1
-=======
-    tag: 619a8fabedc6f29f11d456fdd6aa38c3843d4eaf
     replicas: 2
->>>>>>> bda5e48 (Increase replicas for production high availability)
     port: 8080
     serviceType: ClusterIP
     resources:
@@ -290,13 +250,8 @@ services:
         value: "0"
   cartservice:
     image: 324352301255.dkr.ecr.ap-south-1.amazonaws.com/ecommerce/cartservice
-<<<<<<< HEAD
     tag: 84cb43cd75e99909beb830524b3688eda5535871
-    replicas: 1
-=======
-    tag: 619a8fabedc6f29f11d456fdd6aa38c3843d4eaf
     replicas: 2
->>>>>>> bda5e48 (Increase replicas for production high availability)
     port: 7070
     serviceType: ClusterIP
     resources:
