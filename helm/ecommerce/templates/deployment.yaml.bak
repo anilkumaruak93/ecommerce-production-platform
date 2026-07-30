@@ -35,9 +35,6 @@ spec:
 
     spec:
 
-      securityContext:
-        runAsNonRoot: true
-
       serviceAccountName: ecommerce-sa
 
       imagePullSecrets:
