@@ -58,3 +58,14 @@ module "prod_ec2" {
   environment = var.environment
   owner       = "Anil"
 }
+
+module "prod_network" {
+  source = "../../modules/network-data"
+
+  providers = {
+    aws = aws.hyderabad
+  }
+
+  vpc_id    = "vpc-04dc48480ef37bf59"
+  subnet_id = "subnet-070755ea4aa51a7f6"
+}
