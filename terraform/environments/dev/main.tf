@@ -69,3 +69,12 @@ module "prod_network" {
   vpc_id    = "vpc-04dc48480ef37bf59"
   subnet_id = "subnet-070755ea4aa51a7f6"
 }
+
+module "prod_iam" {
+  source = "../../modules/iam"
+
+  role_name             = "ecommerce-ec2-ecr-role"
+  instance_profile_name = "ecommerce-ec2-ecr-role"
+  environment           = var.environment
+  owner                 = "Anil"
+}
