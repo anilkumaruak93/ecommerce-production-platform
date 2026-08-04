@@ -16,7 +16,8 @@ spec:
     app.kubernetes.io/name: {{ $name }}
 
   ports:
-    - port: {{ $svc.port }}
+    - name: {{ $svc.protocol }}
+      port: {{ $svc.port }}
       targetPort: {{ $svc.port }}
       protocol: TCP
 {{- if eq $svc.serviceType "NodePort" }}
