@@ -3,7 +3,7 @@ imagePullSecrets:
 services:
   frontend:
     image: 324352301255.dkr.ecr.ap-south-1.amazonaws.com/ecommerce/frontend
-    tag: ed26bae2fa838508de3f6a9e691052f6aa90697d
+    tag: e2e5bfba54bb6987c563d665b0cef100b8e7dbcb
     replicas: 2
     port: 8080
     protocol: http
@@ -51,7 +51,7 @@ services:
         value: "shoppingassistantservice:8080"
   currencyservice:
     image: 324352301255.dkr.ecr.ap-south-1.amazonaws.com/ecommerce/currencyservice
-    tag: ed26bae2fa838508de3f6a9e691052f6aa90697d
+    tag: e2e5bfba54bb6987c563d665b0cef100b8e7dbcb
     replicas: 2
     port: 7000
     protocol: grpc
@@ -74,7 +74,7 @@ services:
         value: "0"
   productcatalogservice:
     image: 324352301255.dkr.ecr.ap-south-1.amazonaws.com/ecommerce/productcatalogservice
-    tag: ed26bae2fa838508de3f6a9e691052f6aa90697d
+    tag: e2e5bfba54bb6987c563d665b0cef100b8e7dbcb
     replicas: 2
     port: 3550
     protocol: grpc
@@ -97,7 +97,7 @@ services:
         value: "0"
   recommendationservice:
     image: 324352301255.dkr.ecr.ap-south-1.amazonaws.com/ecommerce/recommendationservice
-    tag: ed26bae2fa838508de3f6a9e691052f6aa90697d
+    tag: e2e5bfba54bb6987c563d665b0cef100b8e7dbcb
     replicas: 2
     port: 8080
     protocol: grpc
@@ -122,7 +122,7 @@ services:
         value: "0"
   adservice:
     image: 324352301255.dkr.ecr.ap-south-1.amazonaws.com/ecommerce/adservice
-    tag: ed26bae2fa838508de3f6a9e691052f6aa90697d
+    tag: e2e5bfba54bb6987c563d665b0cef100b8e7dbcb
     replicas: 1
     port: 9555
     protocol: grpc
@@ -145,7 +145,7 @@ services:
         value: "0"
   shippingservice:
     image: 324352301255.dkr.ecr.ap-south-1.amazonaws.com/ecommerce/shippingservice
-    tag: ed26bae2fa838508de3f6a9e691052f6aa90697d
+    tag: e2e5bfba54bb6987c563d665b0cef100b8e7dbcb
     replicas: 2
     port: 50051
     protocol: grpc
@@ -168,7 +168,7 @@ services:
         value: "0"
   paymentservice:
     image: 324352301255.dkr.ecr.ap-south-1.amazonaws.com/ecommerce/paymentservice
-    tag: ed26bae2fa838508de3f6a9e691052f6aa90697d
+    tag: e2e5bfba54bb6987c563d665b0cef100b8e7dbcb
     replicas: 2
     port: 50051
     protocol: grpc
@@ -195,7 +195,7 @@ services:
         value: "http/protobuf"
   checkoutservice:
     image: 324352301255.dkr.ecr.ap-south-1.amazonaws.com/ecommerce/checkoutservice
-    tag: ed26bae2fa838508de3f6a9e691052f6aa90697d
+    tag: e2e5bfba54bb6987c563d665b0cef100b8e7dbcb
     replicas: 2
     port: 5050
     protocol: grpc
@@ -236,7 +236,7 @@ services:
         value: "otel-collector-opentelemetry-collector.opentelemetry.svc.cluster.local:4317"
   emailservice:
     image: 324352301255.dkr.ecr.ap-south-1.amazonaws.com/ecommerce/emailservice
-    tag: ed26bae2fa838508de3f6a9e691052f6aa90697d
+    tag: e2e5bfba54bb6987c563d665b0cef100b8e7dbcb
     replicas: 2
     port: 8080
     protocol: grpc
@@ -259,7 +259,7 @@ services:
         value: "0"
   cartservice:
     image: 324352301255.dkr.ecr.ap-south-1.amazonaws.com/ecommerce/cartservice
-    tag: ed26bae2fa838508de3f6a9e691052f6aa90697d
+    tag: e2e5bfba54bb6987c563d665b0cef100b8e7dbcb
     replicas: 2
     port: 7070
     protocol: grpc
