@@ -10,7 +10,7 @@ services:
     nodePort: 30081
     resources:
       requests:
-        cpu: "100m"
+        cpu: "50m"
         memory: "128Mi"
       limits:
         cpu: "500m"
@@ -56,7 +56,7 @@ services:
     serviceType: ClusterIP
     resources:
       requests:
-        cpu: "100m"
+        cpu: "50m"
         memory: "128Mi"
       limits:
         cpu: "500m"
@@ -78,7 +78,7 @@ services:
     serviceType: ClusterIP
     resources:
       requests:
-        cpu: "100m"
+        cpu: "50m"
         memory: "128Mi"
       limits:
         cpu: "500m"
@@ -100,7 +100,7 @@ services:
     serviceType: ClusterIP
     resources:
       requests:
-        cpu: "100m"
+        cpu: "50m"
         memory: "128Mi"
       limits:
         cpu: "500m"
@@ -124,7 +124,7 @@ services:
     serviceType: ClusterIP
     resources:
       requests:
-        cpu: "100m"
+        cpu: "50m"
         memory: "128Mi"
       limits:
         cpu: "500m"
@@ -146,7 +146,7 @@ services:
     serviceType: ClusterIP
     resources:
       requests:
-        cpu: "100m"
+        cpu: "50m"
         memory: "128Mi"
       limits:
         cpu: "500m"
@@ -168,7 +168,7 @@ services:
     serviceType: ClusterIP
     resources:
       requests:
-        cpu: "100m"
+        cpu: "50m"
         memory: "128Mi"
       limits:
         cpu: "500m"
@@ -194,7 +194,7 @@ services:
     serviceType: ClusterIP
     resources:
       requests:
-        cpu: "100m"
+        cpu: "50m"
         memory: "128Mi"
       limits:
         cpu: "500m"
@@ -234,7 +234,7 @@ services:
     serviceType: ClusterIP
     resources:
       requests:
-        cpu: "100m"
+        cpu: "50m"
         memory: "128Mi"
       limits:
         cpu: "500m"
@@ -256,7 +256,7 @@ services:
     serviceType: ClusterIP
     resources:
       requests:
-        cpu: "100m"
+        cpu: "50m"
         memory: "128Mi"
       limits:
         cpu: "500m"
@@ -280,7 +280,7 @@ services:
     serviceType: ClusterIP
     resources:
       requests:
-        cpu: "100m"
+        cpu: "50m"
         memory: "128Mi"
       limits:
         cpu: "500m"
