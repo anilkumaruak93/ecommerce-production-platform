@@ -1,0 +1,95 @@
+apiVersion: install.istio.io/v1alpha1
+kind: IstioOperator
+metadata:
+  name: ecommerce-istio
+  namespace: istio-system
+
+spec:
+  profile: demo
+
+  meshConfig:
+    accessLogFile: /dev/stdout
+    enablePrometheusMerge: true
+
+    extensionProviders:
+      - name: otel
+        envoyOtelAls:
+          service: opentelemetry-collector.observability.svc.cluster.local
+          port: 4317
+
+      - name: skywalking
+        skywalking:
+          service: tracing.istio-system.svc.cluster.local
+          port: 11800
+
+      - name: otel-tracing
+        opentelemetry:
+          service: opentelemetry-collector.observability.svc.cluster.local
+          port: 4317
+
+      - name: jaeger
+        opentelemetry:
+          service: jaeger-collector.istio-system.svc.cluster.local
+          port: 4317
+
+  values:
+    global:
+      proxy:
+        resources:
+          requests:
+            cpu: 50m
+            memory: 64Mi
+          limits:
+            cpu: 500m
+            memory: 512Mi
+
+    pilot:
+      autoscaleEnabled: false
+      traceSampling: 100
+      resources:
+        requests:
+          cpu: 10m
+          memory: 100Mi
+
+    gateways:
+      istio-ingressgateway:
+        autoscaleEnabled: false
+        type: NodePort
+
+        ports:
+          - name: status-port
+            port: 15021
+            targetPort: 15021
+            nodePort: 31880
+
+          - name: http2
+            port: 80
+            targetPort: 8080
+            nodePort: 32588
+
+          - name: https
+            port: 443
+            targetPort: 8443
+            nodePort: 30934
+
+          - name: tcp
+            port: 31400
+            targetPort: 31400
+            nodePort: 32602
+
+          - name: tls
+            port: 15443
+            targetPort: 15443
+            nodePort: 31015
+
+        resources:
+          requests:
+            cpu: 10m
+            memory: 40Mi
+
+      istio-egressgateway:
+        autoscaleEnabled: false
+        resources:
+          requests:
+            cpu: 10m
+            memory: 40Mi
